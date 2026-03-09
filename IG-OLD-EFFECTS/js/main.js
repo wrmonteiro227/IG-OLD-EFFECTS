@@ -2,24 +2,20 @@ const videoElement = document.getElementById('input_video');
 const canvasElement = document.getElementById('output_canvas');
 const canvasCtx = canvasElement.getContext('2d');
 
-function onResults(results) {
-    aplicarEfeitos(results);
-}
-
 const faceMesh = new FaceMesh({locateFile: (file) => {
     return `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`;
 }});
 
+// CONFIGURAÇÃO LEVE PARA NÃO TRAVAR
 faceMesh.setOptions({
     maxNumFaces: 1,
-    refineLandmarks: true,
+    refineLandmarks: false, // DESATIVADO: Isso economiza muita CPU
     minDetectionConfidence: 0.5,
     minTrackingConfidence: 0.5
 });
 
-faceMesh.onResults(onResults);
+faceMesh.onResults(aplicarEfeitos);
 
-// Função para redimensionar o canvas corretamente
 function resizeCanvas() {
     canvasElement.width = window.innerWidth;
     canvasElement.height = window.innerHeight;
@@ -32,11 +28,10 @@ const camera = new Camera(videoElement, {
     onFrame: async () => {
         await faceMesh.send({image: videoElement});
     },
-    width: 1280,
-    height: 720
+    width: 640, // Reduzimos a resolução de análise para ganhar fluidez
+    height: 480
 });
 
 camera.start().catch(err => {
-    console.error("Erro na câmera: ", err);
-    alert("Erro ao abrir câmera. Verifique as permissões.");
+    alert("Erro na câmera. Verifique o HTTPS ou permissões.");
 });
