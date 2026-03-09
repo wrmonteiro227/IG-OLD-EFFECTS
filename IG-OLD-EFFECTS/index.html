@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Wr Cam Effects</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils"></script>
+</head>
+<body>
+
+    <div class="app-container">
+        <video id="input_video" style="display:none"></video>
+        <canvas id="output_canvas"></canvas>
+
+        <div class="controls">
+            <button id="btn-foto" class="btn">📸 Foto</button>
+            <button id="btn-video" class="btn">🔴 Gravar</button>
+        </div>
+    </div>
+
+    <script src="js/filtros.js"></script>
+    <script src="js/gravador.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
