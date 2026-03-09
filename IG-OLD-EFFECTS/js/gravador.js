@@ -1,14 +1,9 @@
-/**
- * Lógica de Captura e Salvamento Local
- */
-
 let mediaRecorder;
 let recordedChunks = [];
 
 const btnFoto = document.getElementById('btn-foto');
 const btnVideo = document.getElementById('btn-video');
 
-// --- FUNÇÃO PARA TIRAR FOTO ---
 btnFoto.onclick = () => {
     const dataUrl = canvasElement.toDataURL("image/png");
     const link = document.createElement('a');
@@ -17,7 +12,6 @@ btnFoto.onclick = () => {
     link.click();
 };
 
-// --- LÓGICA DE VÍDEO ---
 btnVideo.onclick = () => {
     if (btnVideo.classList.contains('recording')) {
         pararGravacao();
@@ -28,40 +22,46 @@ btnVideo.onclick = () => {
 
 function iniciarGravacao() {
     recordedChunks = [];
-    // Captura o stream do Canvas a 30 FPS
     const stream = canvasElement.captureStream(30);
     
-    mediaRecorder = new MediaRecorder(stream, {
-        mimeType: 'video/webm; codecs=vp9' 
-    });
+    // Lista de formatos compatíveis (tentando MP4 primeiro para abrir no celular)
+    const tipos = [
+        'video/mp4;codecs=h264',
+        'video/webm;codecs=h264',
+        'video/webm'
+    ];
+    
+    let tipoSuportado = tipos.find(t => MediaRecorder.isTypeSupported(t));
+
+    mediaRecorder = new MediaRecorder(stream, { mimeType: tipoSuportado });
 
     mediaRecorder.ondataavailable = (e) => {
         if (e.data.size > 0) recordedChunks.push(e.data);
     };
 
     mediaRecorder.onstop = salvarVideo;
-
     mediaRecorder.start();
-    btnVideo.innerText = "⏹ Parar";
+    
+    btnVideo.innerText = "⏹ PARAR";
     btnVideo.classList.add('recording');
 }
 
 function pararGravacao() {
     mediaRecorder.stop();
-    btnVideo.innerText = "🔴 Gravar";
+    btnVideo.innerText = "🔴 GRAVAR";
     btnVideo.classList.remove('recording');
 }
 
 function salvarVideo() {
-    const blob = new Blob(recordedChunks, { type: 'video/webm' });
+    const blob = new Blob(recordedChunks, { type: mediaRecorder.mimeType });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = `wr-video-${Date.now()}.webm`;
+    // Força a extensão .mp4 para o celular identificar como vídeo
+    link.download = `wr-video-${Date.now()}.mp4`;
     document.body.appendChild(link);
     link.click();
     
-    // Limpar memória
     setTimeout(() => {
         document.body.removeChild(link);
         window.URL.revokeObjectURL(url);
