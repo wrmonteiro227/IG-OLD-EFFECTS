@@ -3,14 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cacau Show - Clone</title>
+    <title>Cacau Show </title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
     <style>
-        /* Estilos globais básicos para alinhar com o design original */
+        /* ==========================================
+           ESTILOS GLOBAIS
+           ========================================== */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -18,81 +23,86 @@
             background-color: #f9f9f9;
         }
         
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+        a { text-decoration: none; color: inherit; }
 
-        /* --- Estilos do Cabeçalho (Header) --- */
-        .top-nav-bar {
-            background-color: #1a1a1a;
-            color: #b3b3b3;
-            font-size: 11px;
-            font-weight: bold;
+        /* ==========================================
+           HEADER (CABEÇALHO ESCURO FIDELIZADO)
+           ========================================== */
+        .cs-top-bar {
+            background-color: #111111;
             padding: 8px 0;
+            border-bottom: 1px solid #1f1f1f;
+        }
+        .cs-top-bar .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
-        .top-nav-bar ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        .cs-top-bar-links {
             display: flex;
             gap: 20px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            white-space: nowrap;
         }
-
-        .top-nav-bar a:hover {
-            color: #fff;
+        .cs-top-bar .nav-link {
+            color: #b3b3b3;
+            font-size: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
+        .cs-top-bar .nav-link:hover { color: #ffffff; }
 
-        .main-header {
-            background-color: #262626;
-            color: #fff;
+        .cs-main-header {
+            background-color: #1a1a1a;
             padding: 20px 0;
-            border-bottom: 1px solid #333;
         }
 
-        .header-container {
+        .cs-header-container {
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 30px;
+            flex-wrap: nowrap;
         }
-
-        .logo-cacaushow {
-            font-size: 26px;
-            font-family: 'Times New Roman', serif;
-            font-style: italic;
+        
+        .cs-logo-wrapper {
+            flex-shrink: 0;
             display: flex;
             align-items: center;
-            gap: 10px;
-            white-space: nowrap;
+        }
+        
+        .cs-logo-img {
+            height: 38px; 
+            width: auto; 
+            display: block;
             cursor: pointer;
         }
 
-        .logo-icon {
-            font-size: 32px;
-            font-style: normal;
-        }
-
-        .search-wrapper {
+        .cs-search-wrapper {
             flex-grow: 1;
             position: relative;
+            max-width: 850px;
         }
 
-        .search-wrapper input {
+        .cs-search-wrapper input {
             width: 100%;
-            padding: 12px 20px;
+            padding: 12px 45px 12px 20px;
             border-radius: 25px;
             border: none;
-            background-color: #eee;
+            background-color: #f5f5f5;
             color: #333;
+            font-size: 14px;
             outline: none;
         }
+        .cs-search-wrapper input::placeholder { color: #888; }
 
-        .search-wrapper button {
+        .cs-search-btn {
             position: absolute;
             right: 15px;
             top: 50%;
@@ -100,191 +110,121 @@
             background: none;
             border: none;
             cursor: pointer;
-            color: #999;
-        }
-
-        .header-actions {
             display: flex;
             align-items: center;
-            gap: 20px;
-            font-size: 13px;
+            justify-content: center;
         }
 
-        .btn-entrar {
-            background-color: #bc8f8f;
-            color: white;
+        .cs-header-actions {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            flex-shrink: 0;
+        }
+
+        .cs-btn-entrar {
+            background-color: #a37a65;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 12px;
+            border-radius: 5px;
+            padding: 8px 18px;
             border: none;
-            padding: 8px 20px;
-            border-radius: 4px;
-            font-weight: bold;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
+            cursor: pointer;
         }
-
-        .location-info {
+        
+        .cs-location-text {
+            color: #cccccc;
+            font-size: 12px;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 6px;
+            white-space: nowrap;
+        }
+        .cs-location-text strong {
+            color: #ffffff;
+            cursor: pointer;
+            margin-left: 2px;
         }
 
-        .location-info span {
-            font-weight: bold;
-            color: #fff;
-        }
-
-        .cart-icon-wrapper {
+        .cs-cart-icon {
             position: relative;
             cursor: pointer;
-            font-size: 24px;
+            display: flex;
+            align-items: center;
         }
 
-        .cart-badge {
+        .cs-cart-badge {
             position: absolute;
-            top: -5px;
-            right: -10px;
-            background-color: #ff3333;
+            top: -6px;
+            right: -8px;
+            background-color: #ff3b30;
             color: white;
             border-radius: 50%;
-            padding: 2px 6px;
-            font-size: 11px;
+            min-width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
             font-weight: bold;
             transition: transform 0.2s ease;
         }
 
-        .bottom-nav-menu {
-            background-color: #262626;
+        .cs-bottom-nav {
+            background-color: #1a1a1a;
+            border-top: 1px solid #2a2a2a;
             padding: 10px 0;
         }
-
-        .bottom-nav-menu ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        .cs-bottom-nav .container {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 30px;
         }
-
-        .bottom-nav-menu a {
-            color: #fff;
+        .cs-bottom-nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .cs-bottom-nav .nav-link {
+            color: #e0e0e0;
             font-size: 14px;
-            font-weight: 500;
+            text-decoration: none;
             display: flex;
             align-items: center;
             gap: 5px;
         }
-
-        .btn-cacau-lovers {
-            background-color: #b24a52;
-            padding: 6px 15px;
-            border-radius: 4px;
+        .cs-bottom-nav .nav-link:hover { color: #ffffff; }
+        
+        .cs-btn-lovers {
+            background-color: #b44555;
+            color: #ffffff !important;
             font-weight: bold;
-            margin-left: auto;
+            font-size: 13px;
+            border-radius: 4px;
+            padding: 6px 16px;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            cursor: pointer;
         }
-        /* -------------------------------------- */
 
-        /* --- Grid da nova Tela de Produtos --- */
+        /* ==========================================
+           GRID DE PRODUTOS
+           ========================================== */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
             gap: 20px;
         }
-        /* -------------------------------------- */
-
-        /* --- Tela do Carrinho --- */
-        .cartCheckout__title {
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .cart__warningMessage {
-            background-color: #fff3cd;
-            color: #856404;
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid #ffeeba;
-            margin-bottom: 20px;
-        }
-
-        .card.product-info {
-            background: #fff;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            margin-bottom: 20px;
-        }
-
-        .item-image img {
-            max-width: 120px;
-            border-radius: 8px;
-        }
-
-        .line-item-header {
-            margin-left: 15px;
-        }
-
-        .line-item-name {
-            font-size: 16px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        .remove-product {
-            color: #d12027;
-            font-size: 13px;
-            padding: 0;
-            background: none;
-            border: none;
-            text-decoration: underline;
-        }
-
-        .line-item-price-info {
-            font-size: 12px;
-            color: #666;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-        }
-
-        .product-card-footer-wrapper {
-            align-items: center;
-        }
-
-        .line-item-total-price-amount {
-            font-size: 20px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .quantity-label {
-            font-size: 12px;
-            color: #666;
-            margin-bottom: 5px;
-            display: block;
-            text-transform: uppercase;
-        }
-
-        .cacaus-total-title {
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        .cacau-badge {
-            display: flex;
-            align-items: center;
-            background: #fdf2f2;
-            color: #b24a52;
-            padding: 10px;
-            border-radius: 8px;
-            font-weight: bold;
-            margin-top: 10px;
-            width: fit-content;
-        }
-        /* -------------------------------------- */
-
         .product-tile {
             background: #fff;
             border-radius: 8px;
@@ -296,34 +236,11 @@
             height: 100%;
             position: relative;
         }
-
-        .tile-image {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        .product-name-cap {
-            font-size: 14px;
-            font-weight: 600;
-            margin-top: 10px;
-            min-height: 40px;
-        }
-
-        .it__shelf--price {
-            margin-top: 10px;
-        }
-
-        .strike-through del {
-            color: #999;
-            font-size: 12px;
-        }
-
-        .it__shelf__discountPrice {
-            font-size: 18px;
-            font-weight: 700;
-            color: #d12027;
-        }
+        .tile-image { max-width: 100%; height: auto; border-radius: 8px; }
+        .product-name-cap { font-size: 14px; font-weight: 600; margin-top: 10px; min-height: 40px; }
+        .it__shelf--price { margin-top: 10px; }
+        .strike-through del { color: #999; font-size: 12px; }
+        .it__shelf__discountPrice { font-size: 18px; font-weight: 700; color: #d12027; }
 
         .product-tile_cart-btn {
             background-color: #659c59;
@@ -337,153 +254,168 @@
             margin-top: 15px;
             transition: background-color 0.3s;
         }
+        .product-tile_cart-btn:hover { background-color: #528048; }
+        .product-tile_wishlist-btn { background: none; border: none; position: absolute; top: 10px; right: 10px; cursor: pointer; }
+        
+        .product__promo--list { list-style: none; padding: 0; margin: 10px 0 0 0; font-size: 12px; color: #666; display: flex; align-items: center; }
+        .cacau-coin-icon { width: 16px; margin-right: 5px; }
 
-        .product-tile_cart-btn:hover {
-            background-color: #528048;
+        .customQtyInput { display: flex; align-items: center; justify-content: center; margin-top: 10px; }
+        .customQtyInput__container { display: flex; align-items: center; border: 1px solid #ddd; border-radius: 4px; padding: 2px 5px;}
+        .customQtyInput__button { background: none; border: none; font-size: 18px; font-weight: bold; cursor: pointer; padding: 0 10px; color: #666;}
+        .customQtyInput__value { width: 30px; text-align: center; border: none; margin: 0; padding: 5px 0; font-size: 14px;}
+        .customQtyInput__value:focus { outline: none; }
+
+        .banner-image { max-width: 100%; height: auto; border-radius: 12px; }
+        .moment-card__content img { border-radius: 12px; max-width: 100%; }
+        .moment-card__cta { margin-top: -20px; text-align: center; position: relative; z-index: 2; }
+        .moment-card__cta--button { padding: 10px 20px; border-radius: 20px; display: inline-block; font-weight: bold; text-transform: uppercase; font-size: 14px; }
+
+        /* ==========================================
+           CARRINHO REPLICADO
+           ========================================== */
+        .cartCheckout__title { font-size: 28px; font-weight: bold; margin-bottom: 20px; color: #4a3c3c; }
+        .card.product-info { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        .item-image img { max-width: 120px; border-radius: 8px; }
+        .line-item-header { margin-left: 15px; }
+        .line-item-name { font-size: 16px; font-weight: bold; color: #333; margin-bottom: 10px; }
+        .remove-product { color: #d12027; font-size: 13px; padding: 0; background: none; border: none; text-decoration: underline; }
+        .line-item-price-info { font-size: 12px; color: #666; margin-bottom: 5px; text-transform: uppercase; }
+        .line-item-total-price-amount { font-size: 20px; font-weight: bold; color: #333; }
+        .quantity-label { font-size: 12px; color: #666; margin-bottom: 5px; display: block; text-transform: uppercase; }
+        .suggestions-wrapper { background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #e0e0e0;}
+        .cacaus-total-title { font-size: 18px; font-weight: bold; color: #4a3c3c;}
+        .cacau-badge { display: flex; align-items: center; background: #fdf2f2; color: #b24a52; padding: 10px 15px; border-radius: 8px; font-weight: bold; margin-top: 10px; width: fit-content; }
+
+        /* ==========================================
+           FOOTER
+           ========================================== */
+        .cs-footer {
+            background-color: #fdfaf6;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 40px;
+            color: #5a4a42;
+            margin-top: 50px;
         }
-
-        .product-tile_wishlist-btn {
-            background: none;
-            border: none;
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
-        }
-
-        .product__promo--list {
-            list-style: none;
-            padding: 0;
-            margin: 10px 0 0 0;
-            font-size: 12px;
-            color: #666;
+        .cs-info-blocks-row {
             display: flex;
+            justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            border-bottom: 1px solid #eaeaea;
+            padding-bottom: 30px;
+            margin-bottom: 40px;
         }
-
-        .cacau-coin-icon {
-            width: 16px;
-            margin-right: 5px;
-        }
-
-        .customQtyInput {
+        .cs-info-block {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            margin-top: 10px;
-        }
-
-        .customQtyInput__container {
-            display: flex;
-            align-items: center;
-        }
-
-        .customQtyInput__button {
-            background: none;
-            border: none;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            padding: 0 10px;
-        }
-
-        .customQtyInput__value {
-            width: 40px;
-            text-align: center;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            margin: 0 5px;
-            padding: 5px 0;
-        }
-
-        /* Ajustes dos Banners */
-        .banner-image {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .moment-card__content img {
-            border-radius: 12px;
-            max-width: 100%;
-        }
-
-        .moment-card__cta {
-            margin-top: -20px;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .moment-card__cta--button {
-            padding: 10px 20px;
-            border-radius: 20px;
-            display: inline-block;
-            font-weight: bold;
-            text-transform: uppercase;
+            gap: 10px;
             font-size: 14px;
+            font-weight: bold;
+            color: #5a4a42;
         }
+        .cs-info-block img { height: 35px; }
+        .cs-footer h4 { font-weight: bold; font-size: 16px; margin-bottom: 20px; color: #9c836a; }
+        .cs-footer ul { list-style: none; padding: 0; margin: 0; }
+        .cs-footer li { margin-bottom: 12px; font-size: 14px; }
+        .cs-footer a { color: #88786f; text-decoration: none; transition: color 0.2s; }
+        .cs-footer a:hover { color: #5a4a42; text-decoration: underline; }
+        .cs-social-icons { display: flex; gap: 15px; margin-top: 15px; }
+        .cs-social-icons svg { fill: #4a2c2a; width: 24px; height: 24px; cursor: pointer; }
+        .cs-feliz-hoje {
+            font-family: 'Dancing Script', cursive;
+            font-size: 55px;
+            color: #4a2c2a;
+            transform: rotate(-5deg);
+            margin-top: 20px;
+        }
+        .cs-footer-bottom { background-color: #3e2723; color: #ffffff; text-align: center; padding: 20px 0; font-size: 11px; margin-top: 40px; }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="top-nav-bar">
-        <div class="container d-flex justify-content-between">
-            <ul>
-                <li><a href="javascript:void(0)">◎ ACESSIBILIDADE ∨</a></li>
-                <li><a href="javascript:void(0)">SEJA UM REVENDEDOR</a></li>
-                <li><a href="javascript:void(0)">SEJA UM FRANQUEADO</a></li>
-                <li><a href="javascript:void(0)">ÁREA PARA EMPRESAS</a></li>
-                <li><a href="javascript:void(0)">NOSSOS HOTÉIS</a></li>
-                <li><a href="javascript:void(0)">CACAU PARK</a></li>
-                <li><a href="javascript:void(0)">GRUPO PLAYCENTER</a></li>
-            </ul>
-            <ul>
-                <li><a href="javascript:void(0)">📍 ENCONTRE UMA LOJA</a></li>
-                <li><a href="javascript:void(0)">🎁 VALE PRESENTE</a></li>
-            </ul>
+    <div class="cs-top-bar d-none d-lg-block">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <ul class="cs-top-bar-links">
+                    <li><a href="javascript:void(0)" class="nav-link"><svg width="12" height="12" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0a8 8 0 1 0 8 8 8 8 0 0 0-8-8zm0 14A6 6 0 1 1 14 8a6 6 0 0 1-6 6zm1-4H7V8h2zm0-3H7V5h2z"/></svg> ACESSIBILIDADE ∨</a></li>
+                    <li><a href="javascript:void(0)" class="nav-link">SEJA UM REVENDEDOR</a></li>
+                    <li><a href="javascript:void(0)" class="nav-link">SEJA UM FRANQUEADO</a></li>
+                    <li><a href="javascript:void(0)" class="nav-link">ÁREA PARA EMPRESAS</a></li>
+                    <li><a href="javascript:void(0)" class="nav-link">NOSSOS HOTÉIS</a></li>
+                    <li><a href="javascript:void(0)" class="nav-link">CACAU PARK</a></li>
+                    <li><a href="javascript:void(0)" class="nav-link">GRUPO PLAYCENTER</a></li>
+                </ul>
+                <ul class="cs-top-bar-links">
+                    <li><a href="javascript:void(0)" class="nav-link text-white">
+                        <svg width="12" height="12" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0a5 5 0 0 0-5 5c0 4 5 11 5 11s5-7 5-11a5 5 0 0 0-5-5zm0 7.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+                        ENCONTRE UMA LOJA
+                    </a></li>
+                    <li><a href="javascript:void(0)" class="nav-link text-white">
+                        <svg width="12" height="12" fill="currentColor" viewBox="0 0 16 16"><path d="M3 2.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1 5 0v.006c0 .07 0 .27-.038.494H15v12H1v-12h1.038c-.038-.224-.038-.424-.038-.494V2.5zm5 .006c0-.07 0-.27.038-.494A1.5 1.5 0 0 0 5 2.5c0 .644.402 1.096 1.053 1.25.321.076.713.111 1.135.132l.812.04v-1.41zM9 4.346c.422-.02.814-.056 1.135-.132C10.785 4.06 11 3.608 11 2.5a1.5 1.5 0 0 0-3.038-.494C7.962 2.23 7.962 2.43 7.962 2.5v1.846z"/></svg>
+                        VALE PRESENTE
+                    </a></li>
+                </ul>
+            </div>
         </div>
     </div>
 
-    <div class="main-header">
-        <div class="container header-container">
-            <div class="logo-cacaushow" onclick="showHomePage()">
-                <span class="logo-icon">C</span> CacauShow
-            </div>
+    <div class="cs-main-header">
+        <div class="container cs-header-container">
+            <a href="javascript:void(0)" onclick="showHomePage()" class="cs-logo-wrapper">
+                <img src="https://files.catbox.moe/uzmgkt.png" alt="Cacau Show" class="cs-logo-img">
+            </a>
             
-            <div class="search-wrapper">
+            <div class="cs-search-wrapper">
                 <input type="text" placeholder="Buscar Produto">
-                <button type="button">🔍</button>
+                <button type="button" class="cs-search-btn">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </button>
             </div>
 
-            <div class="header-actions">
-                <button class="btn-entrar">👤 ENTRAR</button>
-                <div class="location-info">
-                    📍 Cacau Show - SP <span>ALTERAR</span>
+            <div class="cs-header-actions">
+                <button class="cs-btn-entrar">
+                    <svg width="14" height="14" fill="white" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    ENTRAR
+                </button>
+                <div class="cs-location-text d-none d-xl-flex">
+                    <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0a5 5 0 0 0-5 5c0 4 5 11 5 11s5-7 5-11a5 5 0 0 0-5-5zm0 7.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+                    Cacau Show - SP <strong>ALTERAR</strong>
                 </div>
-                <div class="cart-icon-wrapper" onclick="showCartPage()">
-                    🛒
-                    <span class="cart-badge" id="cart-badge-count">0</span>
+                <div class="cs-cart-icon" onclick="showCartPage()">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                    <span class="cs-cart-badge" id="cart-badge-count">0</span>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="bottom-nav-menu">
-        <div class="container d-flex">
-            <ul>
-                <li><a href="javascript:void(0)">Chocolate ∨</a></li>
-                <li><a href="javascript:void(0)">Biscoito ∨</a></li>
-                <li><a href="javascript:void(0)">Cestas e Presentes ∨</a></li>
-                <li><a href="javascript:void(0)">Páscoa ∨</a></li>
-                <li><a href="javascript:void(0)">Lifestyle ∨</a></li>
-                <li style="margin-left: 20px;"><a href="javascript:void(0)">laCreme 🔖</a></li>
+    <div class="cs-bottom-nav d-none d-lg-block">
+        <div class="container d-flex justify-content-between align-items-center">
+            <ul class="cs-bottom-nav-links">
+                <li><a href="javascript:void(0)" class="nav-link">Chocolate ∨</a></li>
+                <li><a href="javascript:void(0)" class="nav-link">Biscoito ∨</a></li>
+                <li><a href="javascript:void(0)" class="nav-link">Cestas e Presentes ∨</a></li>
+                <li><a href="javascript:void(0)" class="nav-link">Páscoa ∨</a></li>
+                <li><a href="javascript:void(0)" class="nav-link">Lifestyle ∨</a></li>
+                <li><a href="javascript:void(0)" class="nav-link text-white fw-bold ms-3" style="font-size: 15px;">
+                    laCreme 
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:4px;"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                </a></li>
             </ul>
-            <a href="javascript:void(0)" class="btn-cacau-lovers">🍫 Cacau Lovers</a>
+            <button class="cs-btn-lovers">
+                <svg width="16" height="16" fill="white" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/><path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/></svg>
+                Cacau Lovers
+            </button>
         </div>
     </div>
 </header>
-<div id="home-page" class="experience-component experience-cacaushow_layouts-backgroundColorLayout">
+<main>
+
+<section id="home-page" class="experience-component experience-cacaushow_layouts-backgroundColorLayout">
 <div class="" style="background-color: #f9f9f9 !important;">
     <div class="layout-background-color center ">
         <div class="region landingPage__threeRows__row"><div class="experience-component experience-cacaushow_assets-carouselMainBanner">
@@ -535,7 +467,7 @@
     <div class="main-banner-container">
         <a href="javascript:void(0)" onclick="showProductsPage(event)" class="banner-link">
             <figure class="banner-figure-container js-view-promotion js-select-promotion mb-0 " style="border-radius: 12px">
-                <img class="banner-image d-none d-sm-block" alt="Páscoa" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dw25301566/Home/Banner-Carrossel/1264x530_pascoa0111.png">
+                <img class="banner-image d-none d-sm-block" alt="Páscoa" src="https://www.cacaushow.com.br/on/demandware.static/-/Sites-CacauShow-Library/default/dw25301566/Home/Banner-Carrossel/1264x530_pascoa0111.png">
                 <img class="banner-image d-block d-sm-none" alt="Páscoa" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dwe7887b1b/Home/Banner-Carrossel/390x410_pascoa.gif">
             </figure>
         </a>
@@ -592,48 +524,40 @@
 </div></div>
         </div>
         <div class="swiper-button-next js-swiper-button-next"></div>
-        <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span></div>
+        <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"></div>
     </div>
 </div>
-</div><div class="experience-component experience-einstein-einsteinCarousel">
+</div>
 
+<div class="experience-component experience-einstein-einsteinCarousel">
 <div class="einstein-container" style="margin: 50px 0;padding: 0">
-    
         <div class="row">
             <div class="col-12">
                 <h3 class="carousel-title mb-3" style="text-align: left">Especial de Páscoa</h3>
             </div>
         </div>
-    
-
     <div id="carousel-63a15876bd0e883259406dc1ae" class="experience-einstein-carousel experience-einstein-carouselCategory experience-einstein-carouselProduct">
         <div class="js-einstein-carousel einstein-carousel swiper swiper-backface-hidden swiper-initialized swiper-horizontal" data-number-of-slides="5" data-slides-count-mobile="1" data-slides-count-tablet="1" data-slides-count-desktop="4" data-recommender="mais-vendidos-site">
             <div class="swiper-wrapper">
 
 <div class="carousel-item swiper-slide cq_recomm_slot swiper-slide-active" style="width: 794px; margin-right: 16px;" data-swiper-slide-index="0">
-    
 <div class="product" data-pid="1003908" data-product-name="Ovo de Páscoa ao Leite Pelúcia Animadinha com LED Ursinhos Carinhosos 170g" data-product-available="true" data-product-brand="Cacau Show">
     <div class="product-tile lazy-loading">
         <div class="product-tile_wishlist it__shelf--wishlist ">
             <button class="js-wishlist-btn product-tile_wishlist-btn">
-                <svg class="wishlist-heart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
-                    <path d="M9 14.5385C9 14.5385 1 10.2308 1 5.15385C1 4.05218 1.43764 2.99563 2.21663 2.21663C2.99563 1.43764 4.05218 1 5.15385 1C6.89154 1 8.38 1.94692 9 3.46154C9.62 1.94692 11.1085 1 12.8462 1C13.9478 1 15.0044 1.43764 15.7834 2.21663C16.5624 2.99563 17 4.05218 17 5.15385C17 10.2308 9 14.5385 9 14.5385Z" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
+                <svg class="wishlist-heart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none"><path d="M9 14.5385C9 14.5385 1 10.2308 1 5.15385C1 4.05218 1.43764 2.99563 2.21663 2.21663C2.99563 1.43764 4.05218 1 5.15385 1C6.89154 1 8.38 1.94692 9 3.46154C9.62 1.94692 11.1085 1 12.8462 1C13.9478 1 15.0044 1.43764 15.7834 2.21663C16.5624 2.99563 17 4.05218 17 5.15385C17 10.2308 9 14.5385 9 14.5385Z" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
             </button>
         </div>
-
         <div class="tile-head">
             <div class="product-tile_image">
-                <a href="javascript:void(0)">
+                <a href="javascript:void(0)" onclick="showProductsPage(event)">
                     <img src="https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dwf1ad9c04/medium/1003908_1.png" class="tile-image" alt="Ovo de Páscoa ao Leite Pelúcia Animadinha com LED Ursinhos Carinhosos 170g">
                 </a>
             </div>
-
             <div class="pdp-link product-name-cap">
-                <a class="link" href="javascript:void(0)">Ovo de Páscoa ao Leite Pelúcia Animadinha com LED Ursinhos Carinhosos 170g</a>
+                <a class="link" href="javascript:void(0)" onclick="showProductsPage(event)">Ovo de Páscoa ao Leite Pelúcia Animadinha com LED Ursinhos Carinhosos 170g</a>
             </div>
         </div>
-
         <div class="lazy-loading">
             <div class="tile-body">
                 <ul class="product__promo--list" style="min-height: 51.6875px;">
@@ -644,14 +568,11 @@
                         </span>
                     </li>
                 </ul>
-
                 <div class="price-wrapper">
                     <div class="it__shelf--price">
                         <div class="it__shelf--bestPrice">
                             <span class="strike-through list">
-                                <span class="value" content="139.99">
-                                    <del>R$ 139,99</del>
-                                </span>
+                                <span class="value" content="139.99"><del>R$ 139,99</del></span>
                             </span>
                             <span class="it__shelf--value" content="129.99"></span>
                             <div class="it__shelf__discountPrice">
@@ -659,1066 +580,313 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="customQtyInput available">
                         <div class="customQtyInput__container quantity-form">
-                            <button type="button" class="customQtyInput__button customQtyInput__button--minus"><span class="custom_icon custom_icon--minus" aria-hidden="true">-</span></button>
+                            <button type="button" class="customQtyInput__button customQtyInput__button--minus">-</button>
                             <input type="number" min="1.0" max="233" value="1" class="customQtyInput__value quantity-select quantity">
-                            <button type="button" class="customQtyInput__button customQtyInput__button--plus "><span class="custom_icon custom_icon--plus" aria-hidden="true">+</span></button>
+                            <button type="button" class="customQtyInput__button customQtyInput__button--plus ">+</button>
                         </div>
                     </div>
                 </div>
             </div>
-
             <div class="product-tile_buy">
-                <button class="product-tile_cart-btn it__shelf--btn available" onclick="addToCart(event)">
+                <button class="product-tile_cart-btn it__shelf--btn available" onclick="showProductsPage(event)">
                     <span class="cart-button_txt available-text">Adicionar ao carrinho</span>
                 </button>
             </div>
         </div>
     </div>
 </div>
-</div><div class="carousel-item swiper-slide cq_recomm_slot swiper-slide-next" style="width: 794px; margin-right: 16px;" data-swiper-slide-index="1">
-    
+</div>
+
+<div class="carousel-item swiper-slide cq_recomm_slot swiper-slide-next" style="width: 794px; margin-right: 16px;" data-swiper-slide-index="1">
 <div class="product" data-pid="1003503" data-product-name="Ovo de Páscoa laCreme ao Leite 348g" data-product-available="true" data-product-brand="laCreme">
     <div class="product-tile lazy-loading">
         <div class="product-tile_wishlist it__shelf--wishlist ">
             <button class="js-wishlist-btn product-tile_wishlist-btn">
-                <svg class="wishlist-heart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
-                    <path d="M9 14.5385C9 14.5385 1 10.2308 1 5.15385C1 4.05218 1.43764 2.99563 2.21663 2.21663C2.99563 1.43764 4.05218 1 5.15385 1C6.89154 1 8.38 1.94692 9 3.46154C9.62 1.94692 11.1085 1 12.8462 1C13.9478 1 15.0044 1.43764 15.7834 2.21663C16.5624 2.99563 17 4.05218 17 5.15385C17 10.2308 9 14.5385 9 14.5385Z" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
+                <svg class="wishlist-heart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none"><path d="M9 14.5385C9 14.5385 1 10.2308 1 5.15385C1 4.05218 1.43764 2.99563 2.21663 2.21663C2.99563 1.43764 4.05218 1 5.15385 1C6.89154 1 8.38 1.94692 9 3.46154C9.62 1.94692 11.1085 1 12.8462 1C13.9478 1 15.0044 1.43764 15.7834 2.21663C16.5624 2.99563 17 4.05218 17 5.15385C17 10.2308 9 14.5385 9 14.5385Z" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
             </button>
         </div>
-
         <div class="tile-head">
             <div class="product-tile_image">
-                <a href="javascript:void(0)">
+                <a href="javascript:void(0)" onclick="showProductsPage(event)">
                     <img src="https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dwc3d017f4/medium/1003503_1.png" class="tile-image" alt="Ovo de Páscoa laCreme ao Leite 348g">
                 </a>
             </div>
-
             <div class="pdp-link product-name-cap">
-                <a class="link" href="javascript:void(0)">Ovo de Páscoa laCreme ao Leite 348g</a>
+                <a class="link" href="javascript:void(0)" onclick="showProductsPage(event)">Ovo de Páscoa laCreme ao Leite 348g</a>
             </div>
         </div>
-
         <div class="lazy-loading">
             <div class="tile-body">
                 <ul class="product__promo--list" style="min-height: 51.6875px;">
                     <li class="cacau-lovers info-icon">
-                        <span class="badge-text">
-                            <strong class="js-numbers-cacau-lovers numbers-cacau-lovers" data-price="89.99">4</strong>
-                            <span class="js-label-cacau-lovers">Cacaus</span>
-                        </span>
+                        <span class="badge-text"><strong class="js-numbers-cacau-lovers numbers-cacau-lovers" data-price="89.99">4</strong> <span class="js-label-cacau-lovers">Cacaus</span></span>
                     </li>
                     <li class=" product-promo-item">
-                        <span class="badge-text">30% Off na Segunda unidade</span>
+                        <span class="badge-text" style="color:#666;">30% Off na Segunda unidade</span>
                     </li>
                 </ul>
-
                 <div class="price-wrapper">
                     <div class="it__shelf--price">
                         <div class="it__shelf--bestPrice">
-                            <span class="strike-through list">
-                                <span class="value" content="94.99">
-                                    <del>R$ 94,99</del>
-                                </span>
-                            </span>
+                            <span class="strike-through list"><span class="value" content="94.99"><del>R$ 94,99</del></span></span>
                             <span class="it__shelf--value" content="89.99"></span>
-                            <div class="it__shelf__discountPrice">
-                                <span class="price-currency">R$</span><span>89,99</span><span class="unit-label">/un</span>
-                            </div>
+                            <div class="it__shelf__discountPrice"><span class="price-currency">R$</span><span>89,99</span><span class="unit-label">/un</span></div>
                         </div>
                     </div>
-
                     <div class="customQtyInput available">
                         <div class="customQtyInput__container quantity-form">
-                            <button type="button" class="customQtyInput__button customQtyInput__button--minus"><span class="custom_icon custom_icon--minus" aria-hidden="true">-</span></button>
+                            <button type="button" class="customQtyInput__button customQtyInput__button--minus">-</button>
                             <input type="number" min="1.0" max="632" value="1" class="customQtyInput__value quantity-select quantity">
-                            <button type="button" class="customQtyInput__button customQtyInput__button--plus "><span class="custom_icon custom_icon--plus" aria-hidden="true">+</span></button>
+                            <button type="button" class="customQtyInput__button customQtyInput__button--plus ">+</button>
                         </div>
                     </div>
                 </div>
             </div>
-            
             <div class="product-tile_buy">
-                <button class="product-tile_cart-btn it__shelf--btn available" onclick="addToCart(event)">
+                <button class="product-tile_cart-btn it__shelf--btn available" onclick="showProductsPage(event)">
                     <span class="cart-button_txt available-text">Adicionar ao carrinho</span>
                 </button>
             </div>
         </div>
     </div>
 </div>
-</div><div class="carousel-item swiper-slide cq_recomm_slot" style="width: 794px; margin-right: 16px;" data-swiper-slide-index="2">
-    
+</div>
+
+<div class="carousel-item swiper-slide cq_recomm_slot" style="width: 794px; margin-right: 16px;" data-swiper-slide-index="2">
 <div class="product" data-pid="1003909" data-product-name="Ovo de Páscoa ao Leite Pelúcia Zangadinho com LED Ursinhos Carinhosos 170g" data-product-available="true" data-product-brand="Cacau Show">
     <div class="product-tile lazy-loading">
         <div class="product-tile_wishlist it__shelf--wishlist ">
             <button class="js-wishlist-btn product-tile_wishlist-btn">
-                <svg class="wishlist-heart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
-                    <path d="M9 14.5385C9 14.5385 1 10.2308 1 5.15385C1 4.05218 1.43764 2.99563 2.21663 2.21663C2.99563 1.43764 4.05218 1 5.15385 1C6.89154 1 8.38 1.94692 9 3.46154C9.62 1.94692 11.1085 1 12.8462 1C13.9478 1 15.0044 1.43764 15.7834 2.21663C16.5624 2.99563 17 4.05218 17 5.15385C17 10.2308 9 14.5385 9 14.5385Z" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
+                <svg class="wishlist-heart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none"><path d="M9 14.5385C9 14.5385 1 10.2308 1 5.15385C1 4.05218 1.43764 2.99563 2.21663 2.21663C2.99563 1.43764 4.05218 1 5.15385 1C6.89154 1 8.38 1.94692 9 3.46154C9.62 1.94692 11.1085 1 12.8462 1C13.9478 1 15.0044 1.43764 15.7834 2.21663C16.5624 2.99563 17 4.05218 17 5.15385C17 10.2308 9 14.5385 9 14.5385Z" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
             </button>
         </div>
-
         <div class="tile-head">
             <div class="product-tile_image">
-                <a href="javascript:void(0)">
+                <a href="javascript:void(0)" onclick="showProductsPage(event)">
                     <img src="https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dwfba6a2ac/medium/1003909_1.png" class="tile-image" alt="Ovo de Páscoa ao Leite Pelúcia Zangadinho com LED Ursinhos Carinhosos 170g">
                 </a>
             </div>
-
             <div class="pdp-link product-name-cap">
-                <a class="link" href="javascript:void(0)">Ovo de Páscoa ao Leite Pelúcia Zangadinho com LED Ursinhos Carinhosos 170g</a>
+                <a class="link" href="javascript:void(0)" onclick="showProductsPage(event)">Ovo de Páscoa ao Leite Pelúcia Zangadinho com LED Ursinhos Carinhosos 170g</a>
             </div>
         </div>
-
         <div class="lazy-loading">
             <div class="tile-body">
                 <ul class="product__promo--list" style="min-height: 51.6875px;">
                     <li class="cacau-lovers info-icon">
-                        <span class="badge-text">
-                            <strong class="js-numbers-cacau-lovers numbers-cacau-lovers" data-price="129.99">6</strong>
-                            <span class="js-label-cacau-lovers">Cacaus</span>
-                        </span>
+                        <span class="badge-text"><strong class="js-numbers-cacau-lovers numbers-cacau-lovers" data-price="129.99">6</strong> <span class="js-label-cacau-lovers">Cacaus</span></span>
                     </li>
                 </ul>
-
                 <div class="price-wrapper">
                     <div class="it__shelf--price">
                         <div class="it__shelf--bestPrice">
-                            <span class="strike-through list">
-                                <span class="value" content="139.99">
-                                    <del>R$ 139,99</del>
-                                </span>
-                            </span>
+                            <span class="strike-through list"><span class="value" content="139.99"><del>R$ 139,99</del></span></span>
                             <span class="it__shelf--value" content="129.99"></span>
-                            <div class="it__shelf__discountPrice">
-                                <span class="price-currency">R$</span><span>129,99</span><span class="unit-label">/un</span>
-                            </div>
+                            <div class="it__shelf__discountPrice"><span class="price-currency">R$</span><span>129,99</span><span class="unit-label">/un</span></div>
                         </div>
                     </div>
-
                     <div class="customQtyInput available">
                         <div class="customQtyInput__container quantity-form">
-                            <button type="button" class="customQtyInput__button customQtyInput__button--minus"><span class="custom_icon custom_icon--minus" aria-hidden="true">-</span></button>
+                            <button type="button" class="customQtyInput__button customQtyInput__button--minus">-</button>
                             <input type="number" min="1.0" max="279" value="1" class="customQtyInput__value quantity-select quantity">
-                            <button type="button" class="customQtyInput__button customQtyInput__button--plus "><span class="custom_icon custom_icon--plus" aria-hidden="true">+</span></button>
+                            <button type="button" class="customQtyInput__button customQtyInput__button--plus ">+</button>
                         </div>
                     </div>
                 </div>
             </div>
-
             <div class="product-tile_buy">
-                <button class="product-tile_cart-btn it__shelf--btn available" onclick="addToCart(event)">
+                <button class="product-tile_cart-btn it__shelf--btn available" onclick="showProductsPage(event)">
                     <span class="cart-button_txt available-text">Adicionar ao carrinho</span>
                 </button>
             </div>
         </div>
     </div>
 </div>
-</div><div class="carousel-item swiper-slide cq_recomm_slot" style="width: 794px; margin-right: 16px;" data-swiper-slide-index="3">
-    
+</div>
+
+<div class="carousel-item swiper-slide cq_recomm_slot" style="width: 794px; margin-right: 16px;" data-swiper-slide-index="3">
 <div class="product" data-pid="1003938" data-product-name="Ovo de Páscoa ao Leite Pelúcia Snoopy Astronauta 170g" data-product-available="true" data-product-brand="Cacau Show">
     <div class="product-tile lazy-loading">
         <div class="product-tile_wishlist it__shelf--wishlist ">
             <button class="js-wishlist-btn product-tile_wishlist-btn">
-                <svg class="wishlist-heart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
-                    <path d="M9 14.5385C9 14.5385 1 10.2308 1 5.15385C1 4.05218 1.43764 2.99563 2.21663 2.21663C2.99563 1.43764 4.05218 1 5.15385 1C6.89154 1 8.38 1.94692 9 3.46154C9.62 1.94692 11.1085 1 12.8462 1C13.9478 1 15.0044 1.43764 15.7834 2.21663C16.5624 2.99563 17 4.05218 17 5.15385C17 10.2308 9 14.5385 9 14.5385Z" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
+                <svg class="wishlist-heart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none"><path d="M9 14.5385C9 14.5385 1 10.2308 1 5.15385C1 4.05218 1.43764 2.99563 2.21663 2.21663C2.99563 1.43764 4.05218 1 5.15385 1C6.89154 1 8.38 1.94692 9 3.46154C9.62 1.94692 11.1085 1 12.8462 1C13.9478 1 15.0044 1.43764 15.7834 2.21663C16.5624 2.99563 17 4.05218 17 5.15385C17 10.2308 9 14.5385 9 14.5385Z" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
             </button>
         </div>
-
         <div class="tile-head">
             <div class="product-tile_image">
-                <a href="javascript:void(0)">
+                <a href="javascript:void(0)" onclick="showProductsPage(event)">
                     <img src="https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dw6d946df2/medium/1003938_1.png" class="tile-image" alt="Ovo de Páscoa ao Leite Pelúcia Snoopy Astronauta 170g">
                 </a>
             </div>
-
             <div class="pdp-link product-name-cap">
-                <a class="link" href="javascript:void(0)">Ovo de Páscoa ao Leite Pelúcia Snoopy Astronauta 170g</a>
+                <a class="link" href="javascript:void(0)" onclick="showProductsPage(event)">Ovo de Páscoa ao Leite Pelúcia Snoopy Astronauta 170g</a>
             </div>
         </div>
-
         <div class="lazy-loading">
             <div class="tile-body">
                 <ul class="product__promo--list" style="min-height: 51.6875px;">
                     <li class="cacau-lovers info-icon">
-                        <span class="badge-text">
-                            <strong class="js-numbers-cacau-lovers numbers-cacau-lovers" data-price="119.99">5</strong>
-                            <span class="js-label-cacau-lovers">Cacaus</span>
-                        </span>
+                        <span class="badge-text"><strong class="js-numbers-cacau-lovers numbers-cacau-lovers" data-price="119.99">5</strong> <span class="js-label-cacau-lovers">Cacaus</span></span>
                     </li>
                 </ul>
-
                 <div class="price-wrapper">
                     <div class="it__shelf--price">
                         <div class="it__shelf--bestPrice">
-                            <span class="strike-through list">
-                                <span class="value" content="129.99">
-                                    <del>R$ 129,99</del>
-                                </span>
-                            </span>
+                            <span class="strike-through list"><span class="value" content="129.99"><del>R$ 129,99</del></span></span>
                             <span class="it__shelf--value" content="119.99"></span>
-                            <div class="it__shelf__discountPrice">
-                                <span class="price-currency">R$</span><span>119,99</span><span class="unit-label">/un</span>
-                            </div>
+                            <div class="it__shelf__discountPrice"><span class="price-currency">R$</span><span>119,99</span><span class="unit-label">/un</span></div>
                         </div>
                     </div>
-
                     <div class="customQtyInput available">
                         <div class="customQtyInput__container quantity-form">
-                            <button type="button" class="customQtyInput__button customQtyInput__button--minus"><span class="custom_icon custom_icon--minus" aria-hidden="true">-</span></button>
+                            <button type="button" class="customQtyInput__button customQtyInput__button--minus">-</button>
                             <input type="number" min="1.0" max="99" value="1" class="customQtyInput__value quantity-select quantity">
-                            <button type="button" class="customQtyInput__button customQtyInput__button--plus "><span class="custom_icon custom_icon--plus" aria-hidden="true">+</span></button>
+                            <button type="button" class="customQtyInput__button customQtyInput__button--plus ">+</button>
                         </div>
                     </div>
                 </div>
             </div>
-            
             <div class="product-tile_buy">
-                <button class="product-tile_cart-btn it__shelf--btn available" onclick="addToCart(event)">
+                <button class="product-tile_cart-btn it__shelf--btn available" onclick="showProductsPage(event)">
                     <span class="cart-button_txt available-text">Adicionar ao carrinho</span>
                 </button>
             </div>
         </div>
     </div>
 </div>
-</div><div class="carousel-item swiper-slide cq_recomm_slot" style="width: 794px; margin-right: 16px;" data-swiper-slide-index="4">
-    
+</div>
+
+<div class="carousel-item swiper-slide cq_recomm_slot" style="width: 794px; margin-right: 16px;" data-swiper-slide-index="4">
 <div class="product" data-pid="1003999" data-product-name="Ovo de Páscoa ao Leite Chaveiro Luffy One Piece 170g" data-product-available="true" data-product-brand="Cacau Show">
     <div class="product-tile lazy-loading">
         <div class="product-tile_wishlist it__shelf--wishlist ">
             <button class="js-wishlist-btn product-tile_wishlist-btn">
-                <svg class="wishlist-heart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
-                    <path d="M9 14.5385C9 14.5385 1 10.2308 1 5.15385C1 4.05218 1.43764 2.99563 2.21663 2.21663C2.99563 1.43764 4.05218 1 5.15385 1C6.89154 1 8.38 1.94692 9 3.46154C9.62 1.94692 11.1085 1 12.8462 1C13.9478 1 15.0044 1.43764 15.7834 2.21663C16.5624 2.99563 17 4.05218 17 5.15385C17 10.2308 9 14.5385 9 14.5385Z" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
+                <svg class="wishlist-heart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none"><path d="M9 14.5385C9 14.5385 1 10.2308 1 5.15385C1 4.05218 1.43764 2.99563 2.21663 2.21663C2.99563 1.43764 4.05218 1 5.15385 1C6.89154 1 8.38 1.94692 9 3.46154C9.62 1.94692 11.1085 1 12.8462 1C13.9478 1 15.0044 1.43764 15.7834 2.21663C16.5624 2.99563 17 4.05218 17 5.15385C17 10.2308 9 14.5385 9 14.5385Z" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
             </button>
         </div>
-
         <div class="tile-head">
             <div class="product-tile_image">
-                <a href="javascript:void(0)">
+                <a href="javascript:void(0)" onclick="showProductsPage(event)">
                     <img src="https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dw50c7cdae/medium/1003999_1.png" class="tile-image" alt="Ovo de Páscoa ao Leite Chaveiro Luffy One Piece 170g">
                 </a>
             </div>
-
             <div class="pdp-link product-name-cap">
-                <a class="link" href="javascript:void(0)">Ovo de Páscoa ao Leite Chaveiro Luffy One Piece 170g</a>
+                <a class="link" href="javascript:void(0)" onclick="showProductsPage(event)">Ovo de Páscoa ao Leite Chaveiro Luffy One Piece 170g</a>
             </div>
         </div>
-
         <div class="lazy-loading">
             <div class="tile-body">
                 <ul class="product__promo--list" style="min-height: 51.6875px;">
                     <li class="cacau-lovers info-icon">
-                        <span class="badge-text">
-                            <strong class="js-numbers-cacau-lovers numbers-cacau-lovers" data-price="69.99">3</strong>
-                            <span class="js-label-cacau-lovers">Cacaus</span>
-                        </span>
+                        <span class="badge-text"><strong class="js-numbers-cacau-lovers numbers-cacau-lovers" data-price="69.99">3</strong> <span class="js-label-cacau-lovers">Cacaus</span></span>
                     </li>
                 </ul>
-
                 <div class="price-wrapper">
                     <div class="it__shelf--price">
                         <div class="it__shelf--bestPrice">
-                            <span class="strike-through list">
-                                <span class="value" content="74.99">
-                                    <del>R$ 74,99</del>
-                                </span>
-                            </span>
+                            <span class="strike-through list"><span class="value" content="74.99"><del>R$ 74,99</del></span></span>
                             <span class="it__shelf--value" content="69.99"></span>
-                            <div class="it__shelf__discountPrice">
-                                <span class="price-currency">R$</span><span>69,99</span><span class="unit-label">/un</span>
-                            </div>
+                            <div class="it__shelf__discountPrice"><span class="price-currency">R$</span><span>69,99</span><span class="unit-label">/un</span></div>
                         </div>
                     </div>
-
                     <div class="customQtyInput available">
                         <div class="customQtyInput__container quantity-form">
-                            <button type="button" class="customQtyInput__button customQtyInput__button--minus"><span class="custom_icon custom_icon--minus" aria-hidden="true">-</span></button>
+                            <button type="button" class="customQtyInput__button customQtyInput__button--minus">-</button>
                             <input type="number" min="1.0" max="481" value="1" class="customQtyInput__value quantity-select quantity">
-                            <button type="button" class="customQtyInput__button customQtyInput__button--plus "><span class="custom_icon custom_icon--plus" aria-hidden="true">+</span></button>
+                            <button type="button" class="customQtyInput__button customQtyInput__button--plus ">+</button>
                         </div>
                     </div>
                 </div>
             </div>
-            
             <div class="product-tile_buy">
-                <button class="product-tile_cart-btn it__shelf--btn available" onclick="addToCart(event)">
+                <button class="product-tile_cart-btn it__shelf--btn available" onclick="showProductsPage(event)">
                     <span class="cart-button_txt available-text">Adicionar ao carrinho</span>
                 </button>
             </div>
         </div>
     </div>
 </div>
-</div><div class="carousel-item swiper-slide cq_recomm_slot" style="width: 794px; margin-right: 16px;" data-swiper-slide-index="5">
-    
-<div class="product" data-pid="1003934" data-product-name="Ovo de Páscoa Estojo Scooby-Doo 170g" data-product-available="true" data-product-brand="Cacau Show">
-    <div class="product-tile lazy-loading">
-        <div class="product-tile_wishlist it__shelf--wishlist ">
-            <button class="js-wishlist-btn product-tile_wishlist-btn">
-                <svg class="wishlist-heart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
-                    <path d="M9 14.5385C9 14.5385 1 10.2308 1 5.15385C1 4.05218 1.43764 2.99563 2.21663 2.21663C2.99563 1.43764 4.05218 1 5.15385 1C6.89154 1 8.38 1.94692 9 3.46154C9.62 1.94692 11.1085 1 12.8462 1C13.9478 1 15.0044 1.43764 15.7834 2.21663C16.5624 2.99563 17 4.05218 17 5.15385C17 10.2308 9 14.5385 9 14.5385Z" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
-            </button>
-        </div>
-
-        <div class="tile-head">
-            <div class="product-tile_image">
-                <a href="javascript:void(0)">
-                    <img src="https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dwd3460048/medium/1003934_1.png" class="tile-image" alt="Ovo de Páscoa Estojo Scooby-Doo 170g">
-                </a>
-            </div>
-
-            <div class="pdp-link product-name-cap">
-                <a class="link" href="javascript:void(0)">Ovo de Páscoa Estojo Scooby-Doo 170g</a>
-            </div>
-        </div>
-
-        <div class="lazy-loading">
-            <div class="tile-body">
-                <ul class="product__promo--list" style="min-height: 51.6875px;">
-                    <li class="cacau-lovers info-icon">
-                        <span class="badge-text">
-                            <strong class="js-numbers-cacau-lovers numbers-cacau-lovers" data-price="109.99">5</strong>
-                            <span class="js-label-cacau-lovers">Cacaus</span>
-                        </span>
-                    </li>
-                </ul>
-
-                <div class="price-wrapper">
-                    <div class="it__shelf--price">
-                        <div class="it__shelf--bestPrice">
-                            <span class="strike-through list">
-                                <span class="value" content="119.99">
-                                    <del>R$ 119,99</del>
-                                </span>
-                            </span>
-                            <span class="it__shelf--value" content="109.99"></span>
-                            <div class="it__shelf__discountPrice">
-                                <span class="price-currency">R$</span><span>109,99</span><span class="unit-label">/un</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="customQtyInput available">
-                        <div class="customQtyInput__container quantity-form">
-                            <button type="button" class="customQtyInput__button customQtyInput__button--minus"><span class="custom_icon custom_icon--minus" aria-hidden="true">-</span></button>
-                            <input type="number" min="1.0" max="99" value="1" class="customQtyInput__value quantity-select quantity">
-                            <button type="button" class="customQtyInput__button customQtyInput__button--plus "><span class="custom_icon custom_icon--plus" aria-hidden="true">+</span></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="product-tile_buy">
-                <button class="product-tile_cart-btn it__shelf--btn available" onclick="addToCart(event)">
-                    <span class="cart-button_txt available-text">Adicionar ao carrinho</span>
-                </button>
-            </div>
-        </div>
-    </div>
 </div>
 
-</div></div>
-            <div class="swiper-pagination d-none d-md-none d-lg-flex swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span></div>
+            </div>
+            <div class="swiper-pagination d-none d-md-none d-lg-flex swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"></div>
         </div>
         <div class="swiper-button-prev d-block d-md-block d-lg-block"></div>
         <div class="swiper-button-next d-block d-md-block d-lg-block"></div>
     </div>
 </div>
-</div><div class="experience-component experience-cacaushow_assets-carouselMomentCard">
-
-<div class="carousel-moment-card-container" style="margin: 50px 0;padding: 0">
-    <div class="main-text-container"><div class="experience-component experience-cacaushow_assets-mainText">
-
-<div class="main-text-page-container" style="--main-title-color: #000000;--main-title-alignment-mobile: left;--main-title-alignment-desktop: left;--main-text-color: #000000;--main-text-alignment-mobile: left;--main-text-alignment-desktop: left;background: #f9f9f9;margin: 0;padding: 0;border-radius: undefined">
-    <h2 class="main-title">Todos os Momentos Combinam com Cacau Show</h2>
-    <div class="main-description">
-        <p>Momentos Doces</p>
-    </div>
-</div>
-</div></div>
-    <div class="js-carousel-moment-card position-relative" id="carousel-moment-1">
-        <div class="swiper-button-prev js-swiper-button-prev swiper-button-disabled"></div>
-        <div class="swiper swiper-init swiper-initialized swiper-horizontal swiper-backface-hidden">
-            <div class="swiper-wrapper"><div class="swiper-slide swiper-slide-active" style="width: 524px; margin-right: 16px;">
-
-<div class="moment-card__content">
-    <a href="javascript:void(0)" onclick="showProductsPage(event)" title="Momentos Inesquecíveis">
-        <img class="moment-card__image" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dw7a0ad49a/Home/Momentos/momentos_desk3.jpg" alt="image card">
-    </a>
-
-    <div class="moment-card__cta">
-        <a class="moment-card__cta--button" href="javascript:void(0)" onclick="showProductsPage(event)" title="Momentos Inesquecíveis" style="color: #FFFFFF;background: #659c59">Momentos Inesquecíveis </a>
-    </div>
-</div>
-</div><div class="swiper-slide swiper-slide-next" style="width: 524px; margin-right: 16px;">
-
-<div class="moment-card__content">
-    <a href="javascript:void(0)" onclick="showProductsPage(event)" title="Colecionáveis">
-        <img class="moment-card__image" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dwfc2d2258/Home/Linhas/momentos_313x250_colecionaveis.png" alt="image card">
-    </a>
-
-    <div class="moment-card__cta">
-        <a class="moment-card__cta--button" href="javascript:void(0)" onclick="showProductsPage(event)" title="Colecionáveis" style="color: #FFFFFF;background: #659c59">Colecionáveis</a>
-    </div>
-</div>
-</div><div class="swiper-slide" style="width: 524px; margin-right: 16px;">
-
-<div class="moment-card__content">
-    <a href="javascript:void(0)" onclick="showProductsPage(event)" title="Para Levar com Você ">
-        <img class="moment-card__image" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dwe4be65d2/Home/Momentos/momentos_313x250_para-levar-com-voce╠é.png" alt="image card">
-    </a>
-
-    <div class="moment-card__cta">
-        <a class="moment-card__cta--button" href="javascript:void(0)" onclick="showProductsPage(event)" title="Para Levar com Você " style="color: #FFFFFF;background: #659c59">Para Levar com Você </a>
-    </div>
-</div>
-</div><div class="swiper-slide" style="width: 524px; margin-right: 16px;">
-
-<div class="moment-card__content">
-    <a href="javascript:void(0)" onclick="showProductsPage(event)" title="Presenteáveis ">
-        <img class="moment-card__image" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dw0ad4df75/Home/Momentos/momentos_desk1.jpg" alt="image card">
-    </a>
-
-    <div class="moment-card__cta">
-        <a class="moment-card__cta--button" href="javascript:void(0)" onclick="showProductsPage(event)" title="Presenteáveis " style="color: #FFFFFF;background: #659c59">Cestas e Presentes</a>
-    </div>
-</div>
-</div></div>
-        </div>
-        <div class="swiper-button-next js-swiper-button-next"></div>
-    </div>
-</div>
-</div><div class="experience-component experience-einstein-einsteinCarouselCategory">
-
-<div class="einstein-container" style="margin: 50px 0;padding: 0">
-    
-        <div class="row">
-            <div class="col-12">
-                <h3 class="carousel-title mb-3" style="text-align: left">Descubra a experiência irresistível de laCreme.</h3>
-            </div>
-        </div>
-    
-
-    <div id="carousel-e689f0b90705a0ae2cf0f55dc6" class="experience-einstein-carousel experience-einstein-carouselCategory experience-einstein-carouselProduct">
-        <div class="js-einstein-carousel einstein-carousel swiper swiper-backface-hidden swiper-initialized swiper-horizontal" data-number-of-slides="5" data-slides-count-mobile="1" data-slides-count-tablet="1" data-slides-count-desktop="4" data-recommender="mais-vistos-categoria">
-            <div class="swiper-wrapper">
-
-<div class="carousel-item swiper-slide cq_recomm_slot swiper-slide-active" style="width: 794px; margin-right: 16px;" data-swiper-slide-index="0">
-    
-<div class="product" data-pid="1002638" data-product-name="Tablete laCreme de Chocolate ao Leite 100g" data-product-available="true" data-product-brand="laCreme">
-    <div class="product-tile lazy-loading">
-        <div class="product-tile_wishlist it__shelf--wishlist ">
-            <button class="js-wishlist-btn product-tile_wishlist-btn">
-                <svg class="wishlist-heart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
-                    <path d="M9 14.5385C9 14.5385 1 10.2308 1 5.15385C1 4.05218 1.43764 2.99563 2.21663 2.21663C2.99563 1.43764 4.05218 1 5.15385 1C6.89154 1 8.38 1.94692 9 3.46154C9.62 1.94692 11.1085 1 12.8462 1C13.9478 1 15.0044 1.43764 15.7834 2.21663C16.5624 2.99563 17 4.05218 17 5.15385C17 10.2308 9 14.5385 9 14.5385Z" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
-            </button>
-        </div>
-
-        <div class="tile-head">
-            <div class="product-tile_image">
-                <a href="javascript:void(0)">
-                    <img data-src="/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dw153e5cdc/medium/1002638_2.png" class="tile-image" alt="Tablete laCreme de Chocolate ao Leite 100g" title="Tablete laCreme de Chocolate ao Leite 100g" src="https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dw153e5cdc/medium/1002638_2.png">
-                </a>
-            </div>
-
-            <div class="pdp-link product-name-cap">
-                <a class="link" href="javascript:void(0)">Tablete laCreme de Chocolate ao Leite 100g</a>
-            </div>
-        </div>
-
-        <div class="lazy-loading">
-            <div class="tile-body">
-                <ul class="product__promo--list" style="min-height: 51.6875px;">
-                    <li class="cacau-lovers info-icon">
-                        <span class="badge-text">
-                            <strong class="js-numbers-cacau-lovers numbers-cacau-lovers" data-price="19.99">0</strong>
-                            <span class="js-label-cacau-lovers">Cacau</span>
-                        </span>
-                    </li>
-                </ul>
-
-                <div class="price-wrapper">
-                    <div class="it__shelf--price">
-                        <div class="it__shelf--bestPrice">
-                            <span class="strike-through list">
-                                <span class="value" content="21.29">
-                                    <del>R$ 21,29</del>
-                                </span>
-                            </span>
-                            <span class="it__shelf--value" content="19.99"></span>
-                            <div class="it__shelf__discountPrice">
-                                <span class="price-currency">R$</span><span>19,99</span><span class="unit-label">/un</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="customQtyInput available">
-                        <div class="customQtyInput__container quantity-form">
-                            <button type="button" class="customQtyInput__button customQtyInput__button--minus"><span class="custom_icon custom_icon--minus" aria-hidden="true">-</span></button>
-                            <input type="number" min="1.0" max="72" value="1" class="customQtyInput__value quantity-select quantity">
-                            <button type="button" class="customQtyInput__button customQtyInput__button--plus "><span class="custom_icon custom_icon--plus" aria-hidden="true">+</span></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-tile_buy">
-                <button class="product-tile_cart-btn it__shelf--btn available" onclick="addToCart(event)">
-                    <span class="cart-button_txt available-text">Adicionar ao carrinho</span>
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-</div><div class="carousel-item swiper-slide cq_recomm_slot swiper-slide-next" style="width: 794px; margin-right: 16px;" data-swiper-slide-index="1">
-    
-<div class="product" data-pid="1003788" data-product-name="Tablete laCreme de Chocolate Branco com Pistache 100g" data-product-available="true" data-product-brand="laCreme">
-    <div class="product-tile lazy-loading">
-        <div class="product-tile_wishlist it__shelf--wishlist ">
-            <button class="js-wishlist-btn product-tile_wishlist-btn">
-                <svg class="wishlist-heart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
-                    <path d="M9 14.5385C9 14.5385 1 10.2308 1 5.15385C1 4.05218 1.43764 2.99563 2.21663 2.21663C2.99563 1.43764 4.05218 1 5.15385 1C6.89154 1 8.38 1.94692 9 3.46154C9.62 1.94692 11.1085 1 12.8462 1C13.9478 1 15.0044 1.43764 15.7834 2.21663C16.5624 2.99563 17 4.05218 17 5.15385C17 10.2308 9 14.5385 9 14.5385Z" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
-            </button>
-        </div>
-
-        <div class="tile-head">
-            <div class="product-tile_image">
-                <a href="javascript:void(0)">
-                    <img data-src="/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dw1d277e99/medium/1003788_1.png" class="tile-image" alt="Tablete laCreme de Chocolate Branco com Pistache 100g" title="Tablete laCreme de Chocolate Branco com Pistache 100g" src="https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dw1d277e99/medium/1003788_1.png">
-                </a>
-            </div>
-
-            <div class="pdp-link product-name-cap">
-                <a class="link" href="javascript:void(0)">Tablete laCreme de Chocolate Branco com Pistache 100g</a>
-            </div>
-        </div>
-
-        <div class="lazy-loading">
-            <div class="tile-body">
-                <ul class="product__promo--list" style="min-height: 51.6875px;">
-                    <li class="cacau-lovers info-icon">
-                        <span class="badge-text">
-                            <strong class="js-numbers-cacau-lovers numbers-cacau-lovers" data-price="22.99">1</strong>
-                            <span class="js-label-cacau-lovers">Cacau</span>
-                        </span>
-                    </li>
-                </ul>
-
-                <div class="price-wrapper">
-                    <div class="it__shelf--price">
-                        <div class="it__shelf--bestPrice">
-                            <span class="strike-through list">
-                                <span class="value" content="24.49">
-                                    <del>R$ 24,49</del>
-                                </span>
-                            </span>
-                            <span class="it__shelf--value" content="22.99"></span>
-                            <div class="it__shelf__discountPrice">
-                                <span class="price-currency">R$</span><span>22,99</span><span class="unit-label">/un</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="customQtyInput available">
-                        <div class="customQtyInput__container quantity-form">
-                            <button type="button" class="customQtyInput__button customQtyInput__button--minus"><span class="custom_icon custom_icon--minus" aria-hidden="true">-</span></button>
-                            <input type="number" min="1.0" max="28" value="1" class="customQtyInput__value quantity-select quantity">
-                            <button type="button" class="customQtyInput__button customQtyInput__button--plus "><span class="custom_icon custom_icon--plus" aria-hidden="true">+</span></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-tile_buy">
-                <button class="product-tile_cart-btn it__shelf--btn available" onclick="addToCart(event)">
-                    <span class="cart-button_txt available-text">Adicionar ao carrinho</span>
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-</div><div class="carousel-item swiper-slide cq_recomm_slot" style="width: 794px; margin-right: 16px;" data-swiper-slide-index="2">
-    
-<div class="product" data-pid="1002866" data-product-name="Tablete laCreme de Chocolate Branco 100g" data-product-available="true" data-product-brand="laCreme">
-    <div class="product-tile lazy-loading">
-        <div class="product-tile_wishlist it__shelf--wishlist ">
-            <button class="js-wishlist-btn product-tile_wishlist-btn">
-                <svg class="wishlist-heart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
-                    <path d="M9 14.5385C9 14.5385 1 10.2308 1 5.15385C1 4.05218 1.43764 2.99563 2.21663 2.21663C2.99563 1.43764 4.05218 1 5.15385 1C6.89154 1 8.38 1.94692 9 3.46154C9.62 1.94692 11.1085 1 12.8462 1C13.9478 1 15.0044 1.43764 15.7834 2.21663C16.5624 2.99563 17 4.05218 17 5.15385C17 10.2308 9 14.5385 9 14.5385Z" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
-            </button>
-        </div>
-
-        <div class="tile-head">
-            <div class="product-tile_image">
-                <a href="javascript:void(0)">
-                    <img data-src="/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dwbd2c7167/medium/1002866_2.png" class="tile-image" alt="Tablete laCreme de Chocolate Branco 100g" title="Tablete laCreme de Chocolate Branco 100g" src="https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dwbd2c7167/medium/1002866_2.png">
-                </a>
-            </div>
-
-            <div class="pdp-link product-name-cap">
-                <a class="link" href="javascript:void(0)">Tablete laCreme de Chocolate Branco 100g</a>
-            </div>
-        </div>
-
-        <div class="lazy-loading">
-            <div class="tile-body">
-                <ul class="product__promo--list" style="min-height: 51.6875px;">
-                    <li class="cacau-lovers info-icon">
-                        <span class="badge-text">
-                            <strong class="js-numbers-cacau-lovers numbers-cacau-lovers" data-price="19.99">0</strong>
-                            <span class="js-label-cacau-lovers">Cacau</span>
-                        </span>
-                    </li>
-                </ul>
-
-                <div class="price-wrapper">
-                    <div class="it__shelf--price">
-                        <div class="it__shelf--bestPrice">
-                            <span class="strike-through list">
-                                <span class="value" content="21.29">
-                                    <del>R$ 21,29</del>
-                                </span>
-                            </span>
-                            <span class="it__shelf--value" content="19.99"></span>
-                            <div class="it__shelf__discountPrice">
-                                <span class="price-currency">R$</span><span>19,99</span><span class="unit-label">/un</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="customQtyInput available">
-                        <div class="customQtyInput__container quantity-form">
-                            <button type="button" class="customQtyInput__button customQtyInput__button--minus"><span class="custom_icon custom_icon--minus" aria-hidden="true">-</span></button>
-                            <input type="number" min="1.0" max="137" value="1" class="customQtyInput__value quantity-select quantity">
-                            <button type="button" class="customQtyInput__button customQtyInput__button--plus "><span class="custom_icon custom_icon--plus" aria-hidden="true">+</span></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-tile_buy">
-                <button class="product-tile_cart-btn it__shelf--btn available" onclick="addToCart(event)">
-                    <span class="cart-button_txt available-text">Adicionar ao carrinho</span>
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-</div><div class="carousel-item swiper-slide cq_recomm_slot" style="width: 794px; margin-right: 16px;" data-swiper-slide-index="3">
-    
-<div class="product" data-pid="1003107" data-product-name="Tablete laCreme de Chocolate Mezzo 100g" data-product-available="true" data-product-brand="laCreme">
-    <div class="product-tile lazy-loading">
-        <div class="product-tile_wishlist it__shelf--wishlist ">
-            <button class="js-wishlist-btn product-tile_wishlist-btn">
-                <svg class="wishlist-heart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
-                    <path d="M9 14.5385C9 14.5385 1 10.2308 1 5.15385C1 4.05218 1.43764 2.99563 2.21663 2.21663C2.99563 1.43764 4.05218 1 5.15385 1C6.89154 1 8.38 1.94692 9 3.46154C9.62 1.94692 11.1085 1 12.8462 1C13.9478 1 15.0044 1.43764 15.7834 2.21663C16.5624 2.99563 17 4.05218 17 5.15385C17 10.2308 9 14.5385 9 14.5385Z" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
-            </button>
-        </div>
-
-        <div class="tile-head">
-            <div class="product-tile_image">
-                <a href="javascript:void(0)">
-                    <img data-src="/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dw68d9e8da/medium/1003107_2t.png" class="tile-image" alt="Tablete laCreme de Chocolate Mezzo 100g" title="Tablete laCreme de Chocolate Mezzo 100g" src="https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dw68d9e8da/medium/1003107_2t.png">
-                </a>
-            </div>
-
-            <div class="pdp-link product-name-cap">
-                <a class="link" href="javascript:void(0)">Tablete laCreme de Chocolate Mezzo 100g</a>
-            </div>
-        </div>
-
-        <div class="lazy-loading">
-            <div class="tile-body">
-                <ul class="product__promo--list" style="min-height: 51.6875px;">
-                    <li class="cacau-lovers info-icon">
-                        <span class="badge-text">
-                            <strong class="js-numbers-cacau-lovers numbers-cacau-lovers" data-price="19.99">0</strong>
-                            <span class="js-label-cacau-lovers">Cacau</span>
-                        </span>
-                    </li>
-                </ul>
-
-                <div class="price-wrapper">
-                    <div class="it__shelf--price">
-                        <div class="it__shelf--bestPrice">
-                            <span class="strike-through list">
-                                <span class="value" content="21.29">
-                                    <del>R$ 21,29</del>
-                                </span>
-                            </span>
-                            <span class="it__shelf--value" content="19.99"></span>
-                            <div class="it__shelf__discountPrice">
-                                <span class="price-currency">R$</span><span>19,99</span><span class="unit-label">/un</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="customQtyInput available">
-                        <div class="customQtyInput__container quantity-form">
-                            <button type="button" class="customQtyInput__button customQtyInput__button--minus"><span class="custom_icon custom_icon--minus" aria-hidden="true">-</span></button>
-                            <input type="number" min="1.0" max="297" value="1" class="customQtyInput__value quantity-select quantity">
-                            <button type="button" class="customQtyInput__button customQtyInput__button--plus "><span class="custom_icon custom_icon--plus" aria-hidden="true">+</span></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-tile_buy">
-                <button class="product-tile_cart-btn it__shelf--btn available" onclick="addToCart(event)">
-                    <span class="cart-button_txt available-text">Adicionar ao carrinho</span>
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-</div><div class="carousel-item swiper-slide cq_recomm_slot" style="width: 794px; margin-right: 16px;" data-swiper-slide-index="4">
-    
-<div class="product" data-pid="1003637" data-product-name="Tablete laCreme Gold de Chocolate Branco 100g" data-product-available="true" data-product-brand="laCreme">
-    <div class="product-tile lazy-loading">
-        <div class="product-tile_wishlist it__shelf--wishlist ">
-            <button class="js-wishlist-btn product-tile_wishlist-btn">
-                <svg class="wishlist-heart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
-                    <path d="M9 14.5385C9 14.5385 1 10.2308 1 5.15385C1 4.05218 1.43764 2.99563 2.21663 2.21663C2.99563 1.43764 4.05218 1 5.15385 1C6.89154 1 8.38 1.94692 9 3.46154C9.62 1.94692 11.1085 1 12.8462 1C13.9478 1 15.0044 1.43764 15.7834 2.21663C16.5624 2.99563 17 4.05218 17 5.15385C17 10.2308 9 14.5385 9 14.5385Z" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
-            </button>
-        </div>
-
-        <div class="tile-head">
-            <div class="product-tile_image">
-                <a href="javascript:void(0)">
-                    <img data-src="/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dw7de46c2b/medium/1003637_2.png" class="tile-image" alt="Tablete laCreme Gold de Chocolate Branco 100g" title="Tablete laCreme Gold de Chocolate Branco 100g" src="https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dw7de46c2b/medium/1003637_2.png">
-                </a>
-            </div>
-
-            <div class="pdp-link product-name-cap">
-                <a class="link" href="javascript:void(0)">Tablete laCreme Gold de Chocolate Branco 100g</a>
-            </div>
-        </div>
-
-        <div class="lazy-loading">
-            <div class="tile-body">
-                <ul class="product__promo--list" style="min-height: 51.6875px;">
-                    <li class="cacau-lovers info-icon">
-                        <span class="badge-text">
-                            <strong class="js-numbers-cacau-lovers numbers-cacau-lovers" data-price="19.99">0</strong>
-                            <span class="js-label-cacau-lovers">Cacau</span>
-                        </span>
-                    </li>
-                </ul>
-
-                <div class="price-wrapper">
-                    <div class="it__shelf--price">
-                        <div class="it__shelf--bestPrice">
-                            <span class="strike-through list">
-                                <span class="value" content="21.29">
-                                    <del>R$ 21,29</del>
-                                </span>
-                            </span>
-                            <span class="it__shelf--value" content="19.99"></span>
-                            <div class="it__shelf__discountPrice">
-                                <span class="price-currency">R$</span><span>19,99</span><span class="unit-label">/un</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="customQtyInput available">
-                        <div class="customQtyInput__container quantity-form">
-                            <button type="button" class="customQtyInput__button customQtyInput__button--minus"><span class="custom_icon custom_icon--minus" aria-hidden="true">-</span></button>
-                            <input type="number" min="1.0" max="99" value="1" class="customQtyInput__value quantity-select quantity">
-                            <button type="button" class="customQtyInput__button customQtyInput__button--plus "><span class="custom_icon custom_icon--plus" aria-hidden="true">+</span></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-tile_buy">
-                <button class="product-tile_cart-btn it__shelf--btn available" onclick="addToCart(event)">
-                    <span class="cart-button_txt available-text">Adicionar ao carrinho</span>
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-</div><div class="carousel-item swiper-slide cq_recomm_slot" style="width: 794px; margin-right: 16px;" data-swiper-slide-index="5">
-    
-<div class="product" data-pid="1003790" data-product-name="Tablete laCreme de Chocolate ao Leite e Avelã 100g" data-product-available="true" data-product-brand="laCreme">
-    <div class="product-tile lazy-loading">
-        <div class="product-tile_wishlist it__shelf--wishlist ">
-            <button class="js-wishlist-btn product-tile_wishlist-btn">
-                <svg class="wishlist-heart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
-                    <path d="M9 14.5385C9 14.5385 1 10.2308 1 5.15385C1 4.05218 1.43764 2.99563 2.21663 2.21663C2.99563 1.43764 4.05218 1 5.15385 1C6.89154 1 8.38 1.94692 9 3.46154C9.62 1.94692 11.1085 1 12.8462 1C13.9478 1 15.0044 1.43764 15.7834 2.21663C16.5624 2.99563 17 4.05218 17 5.15385C17 10.2308 9 14.5385 9 14.5385Z" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
-            </button>
-        </div>
-
-        <div class="tile-head">
-            <div class="product-tile_image">
-                <a href="javascript:void(0)">
-                    <img data-src="/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dw80590d1e/medium/1003790_1.png" class="tile-image" alt="Tablete laCreme de Chocolate ao Leite e Avelã 100g" title="Tablete laCreme de Chocolate ao Leite e Avelã 100g" src="https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dw80590d1e/medium/1003790_1.png">
-                </a>
-            </div>
-
-            <div class="pdp-link product-name-cap">
-                <a class="link" href="javascript:void(0)">Tablete laCreme de Chocolate ao Leite e Avelã 100g</a>
-            </div>
-        </div>
-
-        <div class="lazy-loading">
-            <div class="tile-body">
-                <ul class="product__promo--list" style="min-height: 51.6875px;">
-                    <li class="cacau-lovers info-icon">
-                        <span class="badge-text">
-                            <strong class="js-numbers-cacau-lovers numbers-cacau-lovers" data-price="19.99">0</strong>
-                            <span class="js-label-cacau-lovers">Cacau</span>
-                        </span>
-                    </li>
-                </ul>
-
-                <div class="price-wrapper">
-                    <div class="it__shelf--price">
-                        <div class="it__shelf--bestPrice">
-                            <span class="strike-through list">
-                                <span class="value" content="21.29">
-                                    <del>R$ 21,29</del>
-                                </span>
-                            </span>
-                            <span class="it__shelf--value" content="19.99"></span>
-                            <div class="it__shelf__discountPrice">
-                                <span class="price-currency">R$</span><span>19,99</span><span class="unit-label">/un</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="customQtyInput available">
-                        <div class="customQtyInput__container quantity-form">
-                            <button type="button" class="customQtyInput__button customQtyInput__button--minus"><span class="custom_icon custom_icon--minus" aria-hidden="true">-</span></button>
-                            <input type="number" min="1.0" max="99" value="1" class="customQtyInput__value quantity-select quantity">
-                            <button type="button" class="customQtyInput__button customQtyInput__button--plus "><span class="custom_icon custom_icon--plus" aria-hidden="true">+</span></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-tile_buy">
-                <button class="product-tile_cart-btn it__shelf--btn available" onclick="addToCart(event)">
-                    <span class="cart-button_txt available-text">Adicionar ao carrinho</span>
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-</div></div>
-            <div class="swiper-pagination d-none d-md-none d-lg-flex swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span></div>
-        </div>
-        <div class="swiper-button-prev d-block d-md-block d-lg-block"></div>
-        <div class="swiper-button-next d-block d-md-block d-lg-block"></div>
-    </div>
-</div>
-</div><div class="experience-component experience-cacaushow_assets-carouselMainBanner">
-
-<div class="carousel-main-banner-container" style="--carousel-image-border-radius: 12px;margin: 50px 0;padding: 0">
-    <div class="main-text-container"><div class="experience-component experience-cacaushow_assets-mainText">
-
-<div class="main-text-page-container" style="--main-title-color: #000000;--main-title-alignment-mobile: left;--main-title-alignment-desktop: left;--main-text-color: #000000;--main-text-alignment-mobile: left;--main-text-alignment-desktop: left;background: #f9f9f9;margin: 0;padding: 0;border-radius: undefined">
-    <h2 class="main-title">Nossas Linhas</h2>
-    <div class="main-description">
-        <p> Clássicos </p>
-    </div>
-</div>
-</div></div>
-    <div class="js-carousel-main-banner position-relative" data-carousel-slide-count="cacauPark1m3t4d" id="carousel-main-banner-2">
-        <div class="swiper-button-prev js-swiper-button-prev"></div>
-        <div class="swiper swiper-init swiper-initialized swiper-horizontal swiper-backface-hidden">
-            <div class="swiper-wrapper"><div class="swiper-slide swiper-slide-active" style="width: 254px; margin-right: 16px;" data-swiper-slide-index="0">
-
-<div class="main-banner-container">
-    <div class="main-banner-container">
-        <a href="javascript:void(0)" onclick="showProductsPage(event)" class="banner-link">
-            <figure class="banner-figure-container js-view-promotion js-select-promotion mb-0 " style="border-radius: 12px">
-                <img class="banner-image d-none d-sm-block" alt="laNut" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dw03b437a0/Home/Linhas/banner_1080x1500_nossas-linhas_lanut.png">
-                <img class="banner-image d-block d-sm-none" alt="laNut" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dw14849afb/Home/Linhas/banner_339x340_nossas-linhas_lanut.png">
-            </figure>
-        </a>
-    </div>
-</div>
-</div><div class="swiper-slide swiper-slide-next" style="width: 254px; margin-right: 16px;" data-swiper-slide-index="1">
-
-<div class="main-banner-container">
-    <div class="main-banner-container">
-        <a href="javascript:void(0)" onclick="showProductsPage(event)" class="banner-link">
-            <figure class="banner-figure-container js-view-promotion js-select-promotion mb-0 " style="border-radius: 12px">
-                <img class="banner-image d-none d-sm-block" alt="LaCreme" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dw4189b8dc/Home/Linhas/banner_1080x1500_nossas-linhas_lacreme.png">
-                <img class="banner-image d-block d-sm-none" alt="LaCreme" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dw97fa5568/Home/Linhas/banner_339x340_nossas-linhas_lacreme.png">
-            </figure>
-        </a>
-    </div>
-</div>
-</div><div class="swiper-slide" style="width: 254px; margin-right: 16px;" data-swiper-slide-index="2">
-
-<div class="main-banner-container">
-    <div class="main-banner-container">
-        <a href="javascript:void(0)" onclick="showProductsPage(event)" class="banner-link">
-            <figure class="banner-figure-container js-view-promotion js-select-promotion mb-0 " style="border-radius: 12px">
-                <img class="banner-image d-none d-sm-block" alt="Especiais" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dw1f54ad4b/Home/Linhas/banner_1080x1500_nossas-linhas_Especiais-de-Pa╠üscoa.png">
-                <img class="banner-image d-block d-sm-none" alt="Especiais" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dwf3671fe6/Home/Linhas/banner_339x340_nossas-linhas_Especiais-de-Pa╠üscoa.png">
-            </figure>
-        </a>
-    </div>
-</div>
-</div><div class="swiper-slide" style="width: 254px; margin-right: 16px;" data-swiper-slide-index="3">
-
-<div class="main-banner-container">
-    <div class="main-banner-container">
-        <a href="javascript:void(0)" onclick="showProductsPage(event)" class="banner-link">
-            <figure class="banner-figure-container js-view-promotion js-select-promotion mb-0 " style="border-radius: 12px">
-                <img class="banner-image d-none d-sm-block" alt="Dreams" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dwa8c661f8/Home/Linhas/banner_1080x1500_nossas-linhas_dreams.png">
-                <img class="banner-image d-block d-sm-none" alt="Dreams" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dw5b22dd4c/Home/Linhas/banner_339x340_nossas-linhas_dreams.png">
-            </figure>
-        </a>
-    </div>
-</div>
-</div><div class="swiper-slide" style="width: 254px; margin-right: 16px;" data-swiper-slide-index="4">
-
-<div class="main-banner-container">
-    <div class="main-banner-container">
-        <a href="javascript:void(0)" onclick="showProductsPage(event)" class="banner-link">
-            <figure class="banner-figure-container js-view-promotion js-select-promotion mb-0 " style="border-radius: 12px">
-                <img class="banner-image d-none d-sm-block" alt="Bytes" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dw14455cd0/Home/Linhas/banner_1080x1500_nossas-linhas_bytes.png">
-                <img class="banner-image d-block d-sm-none" alt="Bytes" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dwa22701b7/Home/Linhas/banner_339x340_nossas-linhas_bytes.png">
-            </figure>
-        </a>
-    </div>
-</div>
-</div></div>
-        </div>
-        <div class="swiper-button-next js-swiper-button-next"></div>
-        <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span></div>
-    </div>
-</div>
-</div><div class="experience-component experience-einstein-einsteinCarouselProduct">
-
-<div class="einstein-container" style="margin: 20px 0;padding: 0">
-    
-        <div class="row">
-            <div class="col-12">
-                <h3 class="carousel-title mb-3" style="text-align: left">Crocancia em Cada Mordida </h3>
-            </div>
-        </div>
-    
-
-    <div id="carousel-39b8acc3e38ffb57098d1a9d47" class="experience-einstein-carousel experience-einstein-carouselCategory experience-einstein-carouselProduct">
-        <div class="js-einstein-carousel einstein-carousel swiper swiper-backface-hidden swiper-initialized swiper-horizontal" data-number-of-slides="5" data-slides-count-mobile="1" data-slides-count-tablet="1" data-slides-count-desktop="4" data-recommender="PDP-Visualizados-Juntos">
-            <div class="swiper-wrapper">
-
-<div class="carousel-item swiper-slide cq_recomm_slot swiper-slide-active" style="width: 794px; margin-right: 16px;" data-swiper-slide-index="0">
-    
-<div class="product" data-pid="1001980" data-product-name="Wafer Biscoiteria Mil-Folhas 80g" data-product-available="true" data-product-brand="null">
-    <div class="product-tile lazy-loading">
-        <div class="product-tile_wishlist it__shelf--wishlist ">
-            <button class="js-wishlist-btn product-tile_wishlist-btn">
-                <svg class="wishlist-heart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
-                    <path d="M9 14.5385C9 14.5385 1 10.2308 1 5.15385C1 4.05218 1.43764 2.99563 2.21663 2.21663C2.99563 1.43764 4.05218 1 5.15385 1C6.89154 1 8.38 1.94692 9 3.46154C9.62 1.94692 11.1085 1 12.8462 1C13.9478 1 15.0044 1.43764 15.7834 2.21663C16.5624 2.99563 17 4.05218 17 5.15385C17 10.2308 9 14.5385 9 14.5385Z" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                </svg>
-            </button>
-        </div>
-
-        <div class="tile-head">
-            <div class="product-tile_image">
-                <a href="javascript:void(0)">
-                    <img data-src="/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dwe5f58bca/medium/1001980_1.png" class="tile-image" alt="Wafer Biscoiteria Mil-Folhas 80g" title="Wafer Biscoiteria Mil-Folhas 80g" src="https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dwe5f58bca/medium/1001980_1.png">
-                </a>
-            </div>
-
-            <div class="pdp-link product-name-cap">
-                <a class="link" href="javascript:void(0)">Wafer Biscoiteria Mil-Folhas 80g</a>
-            </div>
-        </div>
-
-        <div class="lazy-loading">
-            <div class="tile-body">
-                <ul class="product__promo--list" style="min-height: 51.6875px;">
-                    <li class="cacau-lovers info-icon">
-                        <span class="badge-text">
-                            <strong class="js-numbers-cacau-lovers numbers-cacau-lovers" data-price="15.99">0</strong>
-                            <span class="js-label-cacau-lovers">Cacau</span>
-                        </span>
-                    </li>
-                </ul>
-
-                <div class="price-wrapper">
-                    <div class="it__shelf--price">
-                        <div class="it__shelf--bestPrice">
-                            <span class="strike-through list">
-                                <span class="value" content="16.99">
-                                    <del>R$ 16,99</del>
-                                </span>
-                            </span>
-                            <span class="it__shelf--value" content="15.99"></span>
-                            <div class="it__shelf__discountPrice">
-                                <span class="price-currency">R$</span><span>15,99</span><span class="unit-label">/un</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="customQtyInput available">
-                        <div class="customQtyInput__container quantity-form">
-                            <button type="button" class="customQtyInput__button customQtyInput__button--minus"><span class="custom_icon custom_icon--minus" aria-hidden="true">-</span></button>
-                            <input type="number" min="1.0" max="99" value="1" class="customQtyInput__value quantity-select quantity">
-                            <button type="button" class="customQtyInput__button customQtyInput__button--plus "><span class="custom_icon custom_icon--plus" aria-hidden="true">+</span></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="product-tile_buy">
-                <button class="product-tile_cart-btn it__shelf--btn available" onclick="addToCart(event)">
-                    <span class="cart-button_txt available-text">Adicionar ao carrinho</span>
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-
-</div>
-<div class="swiper-pagination d-none d-md-none d-lg-flex swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span></div>
-</div>
-<div class="swiper-button-prev d-block d-md-block d-lg-block"></div>
-<div class="swiper-button-next d-block d-md-block d-lg-block"></div>
 </div>
 </div>
 </div>
-
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="products-page" style="display: none;" class="container mt-4 mb-5">
+</section>
+<section id="products-page" style="display: none;" class="container mt-4 mb-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2>Produtos Selecionados</h2>
-        <button class="btn btn-secondary" onclick="showHomePage()">Voltar para a Home</button>
+        <h2 style="color: #4a3c3c; font-weight: bold; font-family: 'Playfair Display', serif; font-style: italic;">Especial de Páscoa</h2>
+        <button class="cs-btn-entrar" onclick="showHomePage()">Voltar para a Home</button>
     </div>
 
     <div class="js-product-grid product-grid">
+        
+        <div class="product-grid--item js-grid-tile-wrapper">
+            <div class="product js-grid-tile" data-pid="1003908">
+                <div class="product-tile lazy-loading">
+                    <div class="product-tile_wishlist it__shelf--wishlist ">
+                        <button class="js-wishlist-btn product-tile_wishlist-btn">
+                            <svg class="wishlist-heart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none"><path d="M9 14.5385C9 14.5385 1 10.2308 1 5.15385C1 4.05218 1.43764 2.99563 2.21663 2.21663C2.99563 1.43764 4.05218 1 5.15385 1C6.89154 1 8.38 1.94692 9 3.46154C9.62 1.94692 11.1085 1 12.8462 1C13.9478 1 15.0044 1.43764 15.7834 2.21663C16.5624 2.99563 17 4.05218 17 5.15385C17 10.2308 9 14.5385 9 14.5385Z" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                        </button>
+                    </div>
+                    <div class="tile-head">
+                        <div class="product-tile_image">
+                            <a href="javascript:void(0)">
+                                <img src="https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dwf1ad9c04/medium/1003908_1.png" class="tile-image" alt="Ovo de Páscoa ao Leite Pelúcia Animadinha com LED Ursinhos Carinhosos 170g">
+                            </a>
+                        </div>
+                        <div class="pdp-link product-name-cap">
+                            <a class="link" href="javascript:void(0)">Ovo de Páscoa ao Leite Pelúcia Animadinha com LED Ursinhos Carinhosos 170g</a>
+                        </div>
+                    </div>
+                    <div class="lazy-loading">
+                        <div class="tile-body">
+                            <ul class="product__promo--list" style="min-height: 51.6875px;">
+                                <li class="cacau-lovers info-icon">
+                                    <span class="badge-text"><strong class="js-numbers-cacau-lovers numbers-cacau-lovers">6</strong> <span class="js-label-cacau-lovers">Cacaus</span></span>
+                                </li>
+                            </ul>
+                            <div class="price-wrapper">
+                                <div class="it__shelf--price">
+                                    <div class="it__shelf--bestPrice">
+                                        <span class="strike-through list"><span class="value"><del>R$ 139,99</del></span></span>
+                                        <span class="it__shelf--value"></span>
+                                        <div class="it__shelf__discountPrice"><span class="price-currency">R$</span><span>129,99</span><span class="unit-label">/un</span></div>
+                                    </div>
+                                </div>
+                                <div class="customQtyInput available">
+                                    <div class="customQtyInput__container quantity-form">
+                                        <button type="button" class="customQtyInput__button customQtyInput__button--minus">-</button>
+                                        <input type="number" min="1.0" max="99" value="1" class="customQtyInput__value quantity-select quantity">
+                                        <button type="button" class="customQtyInput__button customQtyInput__button--plus ">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-tile_buy">
+                            <button class="product-tile_cart-btn it__shelf--btn available" onclick="addToCart(event)">
+                                <span class="cart-button_txt available-text">Adicionar ao carrinho</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="product-grid--item js-grid-tile-wrapper">
             <div class="product js-grid-tile" data-pid="1003503">
                 <div class="product-tile lazy-loading">
                     <div class="product-tile_wishlist it__shelf--wishlist ">
                         <button class="js-wishlist-btn product-tile_wishlist-btn">
-                            <svg class="wishlist-heart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
-                                <path d="M9 14.5385C9 14.5385 1 10.2308 1 5.15385C1 4.05218 1.43764 2.99563 2.21663 2.21663C2.99563 1.43764 4.05218 1 5.15385 1C6.89154 1 8.38 1.94692 9 3.46154C9.62 1.94692 11.1085 1 12.8462 1C13.9478 1 15.0044 1.43764 15.7834 2.21663C16.5624 2.99563 17 4.05218 17 5.15385C17 10.2308 9 14.5385 9 14.5385Z" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                            </svg>
+                            <svg class="wishlist-heart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none"><path d="M9 14.5385C9 14.5385 1 10.2308 1 5.15385C1 4.05218 1.43764 2.99563 2.21663 2.21663C2.99563 1.43764 4.05218 1 5.15385 1C6.89154 1 8.38 1.94692 9 3.46154C9.62 1.94692 11.1085 1 12.8462 1C13.9478 1 15.0044 1.43764 15.7834 2.21663C16.5624 2.99563 17 4.05218 17 5.15385C17 10.2308 9 14.5385 9 14.5385Z" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                         </button>
                     </div>
                     <div class="tile-head">
@@ -1735,32 +903,25 @@
                         <div class="tile-body">
                             <ul class="product__promo--list" style="min-height: 51.6875px;">
                                 <li class="cacau-lovers info-icon">
-                                    <span class="badge-text">
-                                        <strong class="js-numbers-cacau-lovers numbers-cacau-lovers">4</strong>
-                                        <span class="js-label-cacau-lovers">Cacaus</span>
-                                    </span>
+                                    <span class="badge-text"><strong class="js-numbers-cacau-lovers numbers-cacau-lovers">4</strong> <span class="js-label-cacau-lovers">Cacaus</span></span>
                                 </li>
-                                <li class=" product-promo-item">
-                                    <span class="badge-text">30% Off na Segunda unidade</span>
+                                <li class=" product-promo-item ms-2">
+                                    <span class="badge-text" style="color: #666; font-size: 11px;">30% Off na Segunda unidade</span>
                                 </li>
                             </ul>
                             <div class="price-wrapper">
                                 <div class="it__shelf--price">
                                     <div class="it__shelf--bestPrice">
-                                        <span class="strike-through list">
-                                            <span class="value"><del>R$ 94,99</del></span>
-                                        </span>
+                                        <span class="strike-through list"><span class="value"><del>R$ 94,99</del></span></span>
                                         <span class="it__shelf--value"></span>
-                                        <div class="it__shelf__discountPrice">
-                                            <span class="price-currency">R$</span><span>89,99</span><span class="unit-label">/un</span>
-                                        </div>
+                                        <div class="it__shelf__discountPrice"><span class="price-currency">R$</span><span>89,99</span><span class="unit-label">/un</span></div>
                                     </div>
                                 </div>
                                 <div class="customQtyInput available">
                                     <div class="customQtyInput__container quantity-form">
-                                        <button type="button" class="customQtyInput__button customQtyInput__button--minus"><span class="custom_icon custom_icon--minus" aria-hidden="true">-</span></button>
+                                        <button type="button" class="customQtyInput__button customQtyInput__button--minus">-</button>
                                         <input type="number" min="1.0" max="99" value="1" class="customQtyInput__value quantity-select quantity">
-                                        <button type="button" class="customQtyInput__button customQtyInput__button--plus "><span class="custom_icon custom_icon--plus" aria-hidden="true">+</span></button>
+                                        <button type="button" class="customQtyInput__button customQtyInput__button--plus ">+</button>
                                     </div>
                                 </div>
                             </div>
@@ -1776,55 +937,43 @@
         </div>
 
         <div class="product-grid--item js-grid-tile-wrapper">
-            <div class="product js-grid-tile" data-pid="1003504">
+            <div class="product js-grid-tile" data-pid="1003909">
                 <div class="product-tile lazy-loading">
                     <div class="product-tile_wishlist it__shelf--wishlist ">
                         <button class="js-wishlist-btn product-tile_wishlist-btn">
-                            <svg class="wishlist-heart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
-                                <path d="M9 14.5385C9 14.5385 1 10.2308 1 5.15385C1 4.05218 1.43764 2.99563 2.21663 2.21663C2.99563 1.43764 4.05218 1 5.15385 1C6.89154 1 8.38 1.94692 9 3.46154C9.62 1.94692 11.1085 1 12.8462 1C13.9478 1 15.0044 1.43764 15.7834 2.21663C16.5624 2.99563 17 4.05218 17 5.15385C17 10.2308 9 14.5385 9 14.5385Z" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                            </svg>
+                            <svg class="wishlist-heart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none"><path d="M9 14.5385C9 14.5385 1 10.2308 1 5.15385C1 4.05218 1.43764 2.99563 2.21663 2.21663C2.99563 1.43764 4.05218 1 5.15385 1C6.89154 1 8.38 1.94692 9 3.46154C9.62 1.94692 11.1085 1 12.8462 1C13.9478 1 15.0044 1.43764 15.7834 2.21663C16.5624 2.99563 17 4.05218 17 5.15385C17 10.2308 9 14.5385 9 14.5385Z" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                         </button>
                     </div>
                     <div class="tile-head">
                         <div class="product-tile_image">
                             <a href="javascript:void(0)">
-                                <img src="https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dwa89702f1/medium/1003504_1.png" class="tile-image" alt="Ovo de Páscoa laCreme Branco 348g">
+                                <img src="https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dwfba6a2ac/medium/1003909_1.png" class="tile-image" alt="Ovo de Páscoa ao Leite Pelúcia Zangadinho com LED Ursinhos Carinhosos 170g">
                             </a>
                         </div>
                         <div class="pdp-link product-name-cap">
-                            <a class="link" href="javascript:void(0)">Ovo de Páscoa laCreme Branco 348g</a>
+                            <a class="link" href="javascript:void(0)">Ovo de Páscoa ao Leite Pelúcia Zangadinho com LED Ursinhos Carinhosos 170g</a>
                         </div>
                     </div>
                     <div class="lazy-loading">
                         <div class="tile-body">
                             <ul class="product__promo--list" style="min-height: 51.6875px;">
                                 <li class="cacau-lovers info-icon">
-                                    <span class="badge-text">
-                                        <strong class="js-numbers-cacau-lovers numbers-cacau-lovers">4</strong>
-                                        <span class="js-label-cacau-lovers">Cacaus</span>
-                                    </span>
-                                </li>
-                                <li class=" product-promo-item">
-                                    <span class="badge-text">30% Off na Segunda unidade</span>
+                                    <span class="badge-text"><strong class="js-numbers-cacau-lovers numbers-cacau-lovers">6</strong> <span class="js-label-cacau-lovers">Cacaus</span></span>
                                 </li>
                             </ul>
                             <div class="price-wrapper">
                                 <div class="it__shelf--price">
                                     <div class="it__shelf--bestPrice">
-                                        <span class="strike-through list">
-                                            <span class="value"><del>R$ 94,99</del></span>
-                                        </span>
+                                        <span class="strike-through list"><span class="value"><del>R$ 139,99</del></span></span>
                                         <span class="it__shelf--value"></span>
-                                        <div class="it__shelf__discountPrice">
-                                            <span class="price-currency">R$</span><span>89,99</span><span class="unit-label">/un</span>
-                                        </div>
+                                        <div class="it__shelf__discountPrice"><span class="price-currency">R$</span><span>129,99</span><span class="unit-label">/un</span></div>
                                     </div>
                                 </div>
                                 <div class="customQtyInput available">
                                     <div class="customQtyInput__container quantity-form">
-                                        <button type="button" class="customQtyInput__button customQtyInput__button--minus"><span class="custom_icon custom_icon--minus" aria-hidden="true">-</span></button>
+                                        <button type="button" class="customQtyInput__button customQtyInput__button--minus">-</button>
                                         <input type="number" min="1.0" max="99" value="1" class="customQtyInput__value quantity-select quantity">
-                                        <button type="button" class="customQtyInput__button customQtyInput__button--plus "><span class="custom_icon custom_icon--plus" aria-hidden="true">+</span></button>
+                                        <button type="button" class="customQtyInput__button customQtyInput__button--plus ">+</button>
                                     </div>
                                 </div>
                             </div>
@@ -1840,55 +989,43 @@
         </div>
 
         <div class="product-grid--item js-grid-tile-wrapper">
-            <div class="product js-grid-tile" data-pid="1003863">
+            <div class="product js-grid-tile" data-pid="1003938">
                 <div class="product-tile lazy-loading">
                     <div class="product-tile_wishlist it__shelf--wishlist ">
                         <button class="js-wishlist-btn product-tile_wishlist-btn">
-                            <svg class="wishlist-heart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
-                                <path d="M9 14.5385C9 14.5385 1 10.2308 1 5.15385C1 4.05218 1.43764 2.99563 2.21663 2.21663C2.99563 1.43764 4.05218 1 5.15385 1C6.89154 1 8.38 1.94692 9 3.46154C9.62 1.94692 11.1085 1 12.8462 1C13.9478 1 15.0044 1.43764 15.7834 2.21663C16.5624 2.99563 17 4.05218 17 5.15385C17 10.2308 9 14.5385 9 14.5385Z" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                            </svg>
+                            <svg class="wishlist-heart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none"><path d="M9 14.5385C9 14.5385 1 10.2308 1 5.15385C1 4.05218 1.43764 2.99563 2.21663 2.21663C2.99563 1.43764 4.05218 1 5.15385 1C6.89154 1 8.38 1.94692 9 3.46154C9.62 1.94692 11.1085 1 12.8462 1C13.9478 1 15.0044 1.43764 15.7834 2.21663C16.5624 2.99563 17 4.05218 17 5.15385C17 10.2308 9 14.5385 9 14.5385Z" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                         </button>
                     </div>
                     <div class="tile-head">
                         <div class="product-tile_image">
                             <a href="javascript:void(0)">
-                                <img src="https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dw04106aa4/medium/1003863_1.png" class="tile-image" alt="Ovo de Páscoa laCreme Gianduia 348g">
+                                <img src="https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dw6d946df2/medium/1003938_1.png" class="tile-image" alt="Ovo de Páscoa ao Leite Pelúcia Snoopy Astronauta 170g">
                             </a>
                         </div>
                         <div class="pdp-link product-name-cap">
-                            <a class="link" href="javascript:void(0)">Ovo de Páscoa laCreme Gianduia 348g</a>
+                            <a class="link" href="javascript:void(0)">Ovo de Páscoa ao Leite Pelúcia Snoopy Astronauta 170g</a>
                         </div>
                     </div>
                     <div class="lazy-loading">
                         <div class="tile-body">
                             <ul class="product__promo--list" style="min-height: 51.6875px;">
                                 <li class="cacau-lovers info-icon">
-                                    <span class="badge-text">
-                                        <strong class="js-numbers-cacau-lovers numbers-cacau-lovers">4</strong>
-                                        <span class="js-label-cacau-lovers">Cacaus</span>
-                                    </span>
-                                </li>
-                                <li class=" product-promo-item">
-                                    <span class="badge-text">30% Off na Segunda unidade</span>
+                                    <span class="badge-text"><strong class="js-numbers-cacau-lovers numbers-cacau-lovers">5</strong> <span class="js-label-cacau-lovers">Cacaus</span></span>
                                 </li>
                             </ul>
                             <div class="price-wrapper">
                                 <div class="it__shelf--price">
                                     <div class="it__shelf--bestPrice">
-                                        <span class="strike-through list">
-                                            <span class="value"><del>R$ 94,99</del></span>
-                                        </span>
+                                        <span class="strike-through list"><span class="value"><del>R$ 129,99</del></span></span>
                                         <span class="it__shelf--value"></span>
-                                        <div class="it__shelf__discountPrice">
-                                            <span class="price-currency">R$</span><span>89,99</span><span class="unit-label">/un</span>
-                                        </div>
+                                        <div class="it__shelf__discountPrice"><span class="price-currency">R$</span><span>119,99</span><span class="unit-label">/un</span></div>
                                     </div>
                                 </div>
                                 <div class="customQtyInput available">
                                     <div class="customQtyInput__container quantity-form">
-                                        <button type="button" class="customQtyInput__button customQtyInput__button--minus"><span class="custom_icon custom_icon--minus" aria-hidden="true">-</span></button>
+                                        <button type="button" class="customQtyInput__button customQtyInput__button--minus">-</button>
                                         <input type="number" min="1.0" max="99" value="1" class="customQtyInput__value quantity-select quantity">
-                                        <button type="button" class="customQtyInput__button customQtyInput__button--plus "><span class="custom_icon custom_icon--plus" aria-hidden="true">+</span></button>
+                                        <button type="button" class="customQtyInput__button customQtyInput__button--plus ">+</button>
                                     </div>
                                 </div>
                             </div>
@@ -1903,234 +1040,75 @@
             </div>
         </div>
 
-        <div class="product-grid--item js-grid-tile-wrapper">
-            <div class="product js-grid-tile" data-pid="1003502">
-                <div class="product-tile lazy-loading">
-                    <div class="product-tile_wishlist it__shelf--wishlist ">
-                        <button class="js-wishlist-btn product-tile_wishlist-btn">
-                            <svg class="wishlist-heart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
-                                <path d="M9 14.5385C9 14.5385 1 10.2308 1 5.15385C1 4.05218 1.43764 2.99563 2.21663 2.21663C2.99563 1.43764 4.05218 1 5.15385 1C6.89154 1 8.38 1.94692 9 3.46154C9.62 1.94692 11.1085 1 12.8462 1C13.9478 1 15.0044 1.43764 15.7834 2.21663C16.5624 2.99563 17 4.05218 17 5.15385C17 10.2308 9 14.5385 9 14.5385Z" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="tile-head">
-                        <div class="product-tile_image">
-                            <a href="javascript:void(0)">
-                                <img src="https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dw4e7797ea/medium/1003502_1.png" class="tile-image" alt="Ovo de Páscoa Bendito Cacao Chocolate 70% 348g">
-                            </a>
-                        </div>
-                        <div class="pdp-link product-name-cap">
-                            <a class="link" href="javascript:void(0)">Ovo de Páscoa Bendito Cacao Chocolate 70% 348g</a>
-                        </div>
-                    </div>
-                    <div class="lazy-loading">
-                        <div class="tile-body">
-                            <ul class="product__promo--list" style="min-height: 51.6875px;">
-                                <li class="cacau-lovers info-icon">
-                                    <span class="badge-text">
-                                        <strong class="js-numbers-cacau-lovers numbers-cacau-lovers">4</strong>
-                                        <span class="js-label-cacau-lovers">Cacaus</span>
-                                    </span>
-                                </li>
-                                <li class=" product-promo-item">
-                                    <span class="badge-text">30% Off na Segunda unidade</span>
-                                </li>
-                            </ul>
-                            <div class="price-wrapper">
-                                <div class="it__shelf--price">
-                                    <div class="it__shelf--bestPrice">
-                                        <span class="strike-through list">
-                                            <span class="value"><del>R$ 94,99</del></span>
-                                        </span>
-                                        <span class="it__shelf--value"></span>
-                                        <div class="it__shelf__discountPrice">
-                                            <span class="price-currency">R$</span><span>89,99</span><span class="unit-label">/un</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="customQtyInput available">
-                                    <div class="customQtyInput__container quantity-form">
-                                        <button type="button" class="customQtyInput__button customQtyInput__button--minus"><span class="custom_icon custom_icon--minus" aria-hidden="true">-</span></button>
-                                        <input type="number" min="1.0" max="99" value="1" class="customQtyInput__value quantity-select quantity">
-                                        <button type="button" class="customQtyInput__button customQtyInput__button--plus "><span class="custom_icon custom_icon--plus" aria-hidden="true">+</span></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-tile_buy">
-                            <button class="product-tile_cart-btn it__shelf--btn available" onclick="addToCart(event)">
-                                <span class="cart-button_txt available-text">Adicionar ao carrinho</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="product-grid--item js-grid-tile-wrapper">
-            <div class="product js-grid-tile" data-pid="1003508">
-                <div class="product-tile lazy-loading">
-                    <div class="product-tile_wishlist it__shelf--wishlist ">
-                        <button class="js-wishlist-btn product-tile_wishlist-btn">
-                            <svg class="wishlist-heart-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="16" viewBox="0 0 18 16" fill="none">
-                                <path d="M9 14.5385C9 14.5385 1 10.2308 1 5.15385C1 4.05218 1.43764 2.99563 2.21663 2.21663C2.99563 1.43764 4.05218 1 5.15385 1C6.89154 1 8.38 1.94692 9 3.46154C9.62 1.94692 11.1085 1 12.8462 1C13.9478 1 15.0044 1.43764 15.7834 2.21663C16.5624 2.99563 17 4.05218 17 5.15385C17 10.2308 9 14.5385 9 14.5385Z" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="tile-head">
-                        <div class="product-tile_image">
-                            <a href="javascript:void(0)">
-                                <img src="https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dwba73fe3d/medium/1003508_1.png" class="tile-image" alt="Ovo de Páscoa laCreme Gold Branco 348g">
-                            </a>
-                        </div>
-                        <div class="pdp-link product-name-cap">
-                            <a class="link" href="javascript:void(0)">Ovo de Páscoa laCreme Gold Branco 348g</a>
-                        </div>
-                    </div>
-                    <div class="lazy-loading">
-                        <div class="tile-body">
-                            <ul class="product__promo--list" style="min-height: 51.6875px;">
-                                <li class="cacau-lovers info-icon">
-                                    <span class="badge-text">
-                                        <strong class="js-numbers-cacau-lovers numbers-cacau-lovers">4</strong>
-                                        <span class="js-label-cacau-lovers">Cacaus</span>
-                                    </span>
-                                </li>
-                                <li class=" product-promo-item">
-                                    <span class="badge-text">30% Off na Segunda unidade</span>
-                                </li>
-                            </ul>
-                            <div class="price-wrapper">
-                                <div class="it__shelf--price">
-                                    <div class="it__shelf--bestPrice">
-                                        <span class="strike-through list">
-                                            <span class="value"><del>R$ 94,99</del></span>
-                                        </span>
-                                        <span class="it__shelf--value"></span>
-                                        <div class="it__shelf__discountPrice">
-                                            <span class="price-currency">R$</span><span>89,99</span><span class="unit-label">/un</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="customQtyInput available">
-                                    <div class="customQtyInput__container quantity-form">
-                                        <button type="button" class="customQtyInput__button customQtyInput__button--minus"><span class="custom_icon custom_icon--minus" aria-hidden="true">-</span></button>
-                                        <input type="number" min="1.0" max="99" value="1" class="customQtyInput__value quantity-select quantity">
-                                        <button type="button" class="customQtyInput__button customQtyInput__button--plus "><span class="custom_icon custom_icon--plus" aria-hidden="true">+</span></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-tile_buy">
-                            <button class="product-tile_cart-btn it__shelf--btn available" onclick="addToCart(event)">
-                                <span class="cart-button_txt available-text">Adicionar ao carrinho</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-</div>
-<div id="cart-page" style="display: none;" class="container mt-4 mb-5">
+</section>
+<section id="cart-page" style="display: none;" class="container mt-4 mb-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <button class="btn btn-secondary" onclick="showHomePage()">Voltar para a Loja</button>
+        <button class="cs-btn-entrar" onclick="showHomePage()">Voltar para a Loja</button>
     </div>
 
-    <div class="checkout__cart checkout__cartPage">
+    <div class="checkout__cart">
         <div class="cartCheckout__titleButton">
             <h1 class="cartCheckout__title">Carrinho de compra</h1>
         </div>
 
         <div class="cartProductList">
-            <div class="cartProducts">
-                <div class="d-none" id="empty-cart-message">
-                    <div class="container cart-empty">
-                        <div class="row">
-                            <div class="cart__warningMessage">
-                                <h3>Seu carrinho de compras esta vazio! Adicione seu produto Cacau Show.</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+            <div class="cartProducts" id="cart-items-container">
+                
                 <div class="card product-info uuid-090aab4ef913ce46d7c3d15dd7">
-                    <div class="row w-100 mb-2">
+                    <div class="row w-100 mb-2 align-items-center">
                         <div class="col-md-5 col-12">
-                            <div class="row">
-                                <div class="d-flex flex-row w-100">
-                                    <div class="item-image">
-                                        <a class="link" href="javascript:void(0)">
-                                            <img class="product-image" src="https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dw728f6910/small/1003503_1.png" alt="Ovo de Páscoa laCreme ao Leite 348g, , small.">
-                                        </a>
-                                    </div>
-                                    <div class="line-item-info">
-                                        <div class="line-item-header">
-                                            <div class="line-item-name">
-                                                <a class="link" href="javascript:void(0)">
-                                                    Ovo de Páscoa laCreme ao Leite 348g
-                                                </a>
-                                            </div>
-                                            <div class="remove-line-item d-lg-none">
-                                                <button type="button" class="remove-product btn btn-light" aria-label="Remover produto">Remover</button>
-                                            </div>
+                            <div class="d-flex flex-row w-100 align-items-center">
+                                <div class="item-image" style="margin-right: 15px;">
+                                    <a class="link" href="javascript:void(0)">
+                                        <img class="product-image" src="https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dw728f6910/small/1003503_1.png" alt="Ovo de Páscoa laCreme ao Leite 348g">
+                                    </a>
+                                </div>
+                                <div class="line-item-info">
+                                    <div class="line-item-header">
+                                        <div class="line-item-name">
+                                            <a class="link" href="javascript:void(0)">Ovo de Páscoa laCreme ao Leite 348g</a>
                                         </div>
-                                        <div class="hidden-md-down">
-                                            <button type="button" class="remove-product btn btn-light" aria-label="Remover produto">Remover</button>
+                                        <div>
+                                            <button type="button" class="remove-product">Remover</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col product-card-footer">
-                            <div class="row product-card-footer-wrapper">
-                                <div class="col-5 line-item-price line-item-price-090aab4ef913ce46d7c3d15dd7">
+                        <div class="col product-card-footer mt-3 mt-md-0">
+                            <div class="row product-card-footer-wrapper align-items-center">
+                                <div class="col-4 line-item-price">
                                     <p class="line-item-price-info">Preço Unitário (R$)</p>
                                     <div class="unit-price">
                                         <div class="it__shelf--price">
                                             <div class="it__shelf--bestPrice">
-                                                <span class="strike-through list">
-                                                    <span class="value" content="94.99">
-                                                        <del>R$ 94,99</del>
-                                                    </span>
-                                                    <span class="discountPercentage d-none">{0}%</span>
-                                                </span>
-                                                <span class="it__shelf--value" content="89.99"></span>
-                                                <div class="it__shelf__discountPrice">
-                                                    <span class="price-currency">R$</span>
-                                                    <span>89,99</span>
-                                                    <span class="unit-label">/un</span>
+                                                <span class="strike-through list" style="color:#999; font-size:12px;"><del>R$ 94,99</del></span>
+                                                <div class="it__shelf__discountPrice" style="color:#d12027; font-weight:bold; font-size:18px;">
+                                                    <span class="price-currency">R$</span><span>89,99</span><span class="unit-label" style="font-size:12px; font-weight:normal;">/un</span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="col-3 line-item-quantity">
-                                    <div class="prices_add_to_cart_actions it_product__price_buybt">
-                                        <div class="row it_product__price_buybt__row">
-                                            <label class="line-item-pricing-info quantity-label">Quantidade</label>
-                                            <div class="customQtyInput product-detail-is-loading">
-                                                <div class="customQtyInput__container quantity-form">
-                                                    <button type="button" class="customQtyInput__button customQtyInput__button--minus"><span class="custom_icon custom_icon--minus" aria-hidden="true">-</span></button>
-                                                    <input type="number" min="1.0" max="632.0" value="1" class="customQtyInput__value quantity-select quantity">
-                                                    <button type="button" class="customQtyInput__button customQtyInput__button--plus "><span class="custom_icon custom_icon--plus" aria-hidden="true">+</span></button>
-                                                </div>
-                                            </div>
-                                            <div class="item-attributes d-flex flex-column mt-2">
-                                                <div class="line-item-availability">
-                                                    <p class="line-item-attributes" style="font-size: 12px; color: #666;">632 Itens em estoque</p>
-                                                </div>
-                                            </div>
+                                <div class="col-4 line-item-quantity d-flex flex-column align-items-center">
+                                    <p class="quantity-label">Quantidade</p>
+                                    <div class="customQtyInput mt-0">
+                                        <div class="customQtyInput__container quantity-form">
+                                            <button type="button" class="customQtyInput__button customQtyInput__button--minus">-</button>
+                                            <input type="number" min="1.0" max="632.0" value="1" class="customQtyInput__value quantity-select quantity">
+                                            <button type="button" class="customQtyInput__button customQtyInput__button--plus ">+</button>
                                         </div>
                                     </div>
+                                    <p style="font-size: 11px; color: #666; text-align: center; margin-top:5px; margin-bottom: 0;">632 Itens em estoque</p>
                                 </div>
 
-                                <div class="col-4 line-item-total-price">
+                                <div class="col-4 line-item-total-price text-end">
                                     <p class="line-item-price-info">subtotal (R$)</p>
-                                    <div class="item-total-090aab4ef913ce46d7c3d15dd7 price">
-                                        <div class="saddle pricing line-item-total-price-amount item-total-090aab4ef913ce46d7c3d15dd7">R$ 89,99</div>
+                                    <div class="price">
+                                        <div class="line-item-total-price-amount">R$ 89,99</div>
                                     </div>
                                 </div>
                             </div>
@@ -2138,25 +1116,104 @@
                     </div>
                 </div>
 
-                <div class="productSlide last-gradient checkoutProductSlider mt-4">
-                    <div class="suggestions-wrapper">
-                        <div class="suggestions-heading">
-                            <h3 class="cacaus-total-title">Total de Cacaus:</h3>
-                            <div class="cacau-badge">
-                                <img class="cacau-coin-icon" src="https://www.cacaushow.com.br/on/demandware.static/Sites-CacauShow-Site/-/default/dwec374bf5/svg/icon-cacau-coin.svg" alt="">
-                                <span class="js-cacau-points cacau-points" style="margin: 0 5px;">4</span> Cacaus
-                            </div>
-                        </div>
+                <div class="suggestions-wrapper mt-4">
+                    <h3 class="cacaus-total-title">Total de Cacaus:</h3>
+                    <div class="cacau-badge">
+                        <img class="cacau-coin-icon" src="https://www.cacaushow.com.br/on/demandware.static/Sites-CacauShow-Site/-/default/dwec374bf5/svg/icon-cacau-coin.svg" alt="">
+                        <span class="js-cacau-points cacau-points" style="margin: 0 5px;">4</span> Cacaus
                     </div>
                 </div>
 
             </div>
         </div>
     </div>
-</div>
+</section>
+</main>
+<footer class="cs-footer">
+    <div class="container pb-4" style="border-bottom: 1px solid #eaeaea;">
+        <div class="row text-center cs-info-blocks-row">
+            <div class="col-md col-6 cs-info-block">
+                <img src="https://www.cacaushow.com.br/on/demandware.static/Sites-CacauShow-Site/-/default/dw060a0b16/images/footer/icons/icon-sobre-cacaushow.svg" alt="Sobre a Cacau Show">
+                Sobre a Cacau Show
+            </div>
+            <div class="col-md col-6 cs-info-block">
+                <img src="https://www.cacaushow.com.br/on/demandware.static/Sites-CacauShow-Site/-/default/dw8db15982/images/footer/icons/icon-fazenda.svg" alt="Nossa Fazenda">
+                Nossa Fazenda
+            </div>
+            <div class="col-md col-6 cs-info-block">
+                <img src="https://www.cacaushow.com.br/on/demandware.static/Sites-CacauShow-Site/-/default/dw15db4730/images/footer/icons/icon-instituto.svg" alt="Instituto Cacau Show">
+                Instituto Cacau Show
+            </div>
+            <div class="col-md col-6 cs-info-block" style="color: #659c59;">
+                <img src="https://www.cacaushow.com.br/on/demandware.static/Sites-CacauShow-Site/-/default/dwfcd55577/images/footer/icons/eureciclo-logo.svg" alt="Eureciclo">
+                eureciclo
+            </div>
+            <div class="col-md col-12 cs-info-block">
+                <img src="https://www.cacaushow.com.br/on/demandware.static/Sites-CacauShow-Site/-/default/dw9e3386d9/images/footer/icons/lgpd.svg" alt="LGPD">
+                LGPD
+            </div>
+        </div>
+    </div>
+    
+    <div class="container pt-4">
+        <div class="row">
+            <div class="col-md-5 mb-4">
+                <p style="font-size: 12px; line-height: 1.6; color: #88786f; max-width: 90%;">
+                    Preços apresentados na loja virtual podem variar de acordo com a região. Informações sobre preços, prazos de validade, estoque e origem podem ser obtidas diretamente nas lojas. Consulte a loja para verificar disponibilidade.<br><br>
+                    Preços, estoques, informações e condições disponíveis no site estão sujeitos a alterações sem aviso prévio. *Preços e produtos do Choco-Outlet são válidos somente para compras realizadas na loja virtual sujeito a disponibilidade de estoque.
+                </p>
+            </div>
+            <div class="col-md-3 mb-4">
+                <h4>INSTITUCIONAL</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 12px;"><a href="javascript:void(0)" style="color: #88786f; font-size: 14px;">Seja um Revendedor</a></li>
+                    <li style="margin-bottom: 12px;"><a href="javascript:void(0)" style="color: #88786f; font-size: 14px;">Seja um Franqueado</a></li>
+                    <li style="margin-bottom: 12px;"><a href="javascript:void(0)" style="color: #88786f; font-size: 14px;">Área para Empresas</a></li>
+                    <li style="margin-bottom: 12px;"><a href="javascript:void(0)" style="color: #88786f; font-size: 14px;">Trabalhe Conosco</a></li>
+                    <li style="margin-bottom: 12px;"><a href="javascript:void(0)" style="color: #88786f; font-size: 14px;">Língua de Gato</a></li>
+                    <li style="margin-bottom: 12px;"><a href="javascript:void(0)" style="color: #88786f; font-size: 14px;">Nossas Marcas</a></li>
+                    <li style="margin-bottom: 12px;"><a href="javascript:void(0)" style="color: #88786f; font-size: 14px;">Linha Cacau Home</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h4>POLÍTICAS</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 12px;"><a href="javascript:void(0)" style="color: #88786f; font-size: 14px;">Termos de Uso</a></li>
+                    <li style="margin-bottom: 12px;"><a href="javascript:void(0)" style="color: #88786f; font-size: 14px;">Política de Privacidade</a></li>
+                    <li style="margin-bottom: 12px;"><a href="javascript:void(0)" style="color: #88786f; font-size: 14px;">Política de Trocas</a></li>
+                    <li style="margin-bottom: 12px;"><a href="javascript:void(0)" style="color: #88786f; font-size: 14px;">FAQ</a></li>
+                    <li style="margin-bottom: 12px;"><a href="javascript:void(0)" style="color: #88786f; font-size: 14px;">Regulamentos</a></li>
+                    <li style="margin-bottom: 12px;"><a href="javascript:void(0)" style="color: #88786f; font-size: 14px;">SAC</a></li>
+                    <li style="margin-bottom: 12px;"><a href="javascript:void(0)" style="color: #88786f; font-size: 14px;">Comunicado Oficial Cacau Show</a></li>
+                </ul>
+                <div style="margin-top: 20px; display: flex; align-items: center; gap: 15px;">
+                    <span style="font-weight: bold; font-size: 14px; color: #5a4a42;">Siga-nos</span>
+                    <div class="cs-social-icons" style="display: flex; gap: 10px;">
+                        <a href="javascript:void(0)">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#4a2c2a"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h7v-7h-2v-3h2V8.5c0-2.2 1.3-3.4 3.3-3.4.9 0 1.9.2 1.9.2v2.1h-1.1c-1 0-1.3.6-1.3 1.3V11h2.4l-.4 3h-2v7h4a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"/></svg>
+                        </a>
+                        <a href="javascript:void(0)">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#4a2c2a"><path d="M12 2c2.7 0 3 .01 4.1.06 1 .04 1.6.2 1.9.33.4.15.7.35 1 .65s.5.6.65 1c.13.3.29.9.33 1.9.05 1.1.06 1.4.06 4.1s-.01 3-.06 4.1c-.04 1-.2 1.6-.33 1.9-.15.4-.35.7-.65 1s-.6.5-1 .65c-.3.13-.9.29-1.9.33-1.1.05-1.4.06-4.1.06s-3-.01-4.1-.06c-1-.04-1.6-.2-1.9-.33a2.7 2.7 0 0 1-1.65-1.65c-.13-.3-.29-.9-.33-1.9-.05-1.1-.06-1.4-.06-4.1s.01-3 .06-4.1c.04-1 .2-1.6.33-1.9.15-.4.35-.7.65-1s.6-.5 1-.65c.3-.13.9-.29 1.9-.33C9 2.01 9.3 2 12 2zm0 1.8c-2.7 0-3 .01-4.1.06-.9.04-1.4.2-1.7.32-.4.16-.7.38-.96.64s-.48.56-.64.96c-.12.3-.28.8-.32 1.7-.05 1.1-.06 1.4-.06 4.1s.01 3 .06 4.1c.04.9.2 1.4.32 1.7.16.4.38.7.64.96s.56.48.96.64c.3.12.8.28 1.7.32 1.1.05 1.4.06 4.1.06s3-.01 4.1-.06c.9-.04 1.4-.2 1.7-.32.4-.16.7-.38.96-.64s.48-.56.64-.96c.12-.3.28-.8.32-1.7.05-1.1.06-1.4.06-4.1s-.01-3-.06-4.1c-.04-.9-.2-1.4-.32-1.7a2.5 2.5 0 0 0-.64-.96 2.5 2.5 0 0 0-.96-.64c-.3-.12-.8-.28-1.7-.32-1.1-.05-1.4-.06-4.1-.06zM12 6.8a5.2 5.2 0 1 1 0 10.4 5.2 5.2 0 0 1 0-10.4zm0 8.6a3.4 3.4 0 1 0 0-6.8 3.4 3.4 0 0 0 0 6.8zm5.3-7.5a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>
+                        </a>
+                        <a href="javascript:void(0)">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#4a2c2a"><path d="M21.6 7.6c-.2-.9-.9-1.6-1.8-1.8C18.2 5.5 12 5.5 12 5.5s-6.2 0-7.8.3C3.3 6 2.6 6.7 2.4 7.6 2.2 9.2 2.2 12 2.2 12s0 2.8.2 4.4c.2.9.9 1.6 1.8 1.8 1.6.3 7.8.3 7.8.3s6.2 0 7.8-.3c.9-.2 1.6-.9 1.8-1.8.2-1.6.2-4.4.2-4.4s0-2.8-.2-4.4zM9.8 15V9l6.3 3-6.3 3z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="cs-feliz-hoje text-end d-none d-md-block">feliz hoje</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="cs-footer-bottom">
+        <div class="container">
+            <p>&copy; Copyright 2023. Todos os direitos reservados. | Cacau Comércio Eletrônico LTDA 32.143.933/0002-05. | Endereço: Avenida Helio Ossamu Daikuara, 1445 Bairro Jardim Vista Alegre Município Embu das Artes - SP CEP: 06807-000</p>
+        </div>
+    </div>
+</footer>
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script>
-    // Inicialização básica do Swiper para fazer o carrossel funcionar
+    // Inicialização básica do Swiper
     var swipers = document.querySelectorAll('.swiper-init');
     swipers.forEach(function(swiperContainer) {
         new Swiper(swiperContainer, {
@@ -2191,7 +1248,7 @@
         });
     });
 
-    // Lógica do Carrinho, Botões de Quantidade e Transição de Telas
+    // Lógica do Carrinho e Botões de Quantidade
     let cartTotalItems = 0;
         
     function addToCart(event) {
@@ -2208,17 +1265,16 @@
         const cartBadge = document.getElementById('cart-badge-count');
         if (cartBadge) {
             cartBadge.textContent = cartTotalItems;
-            // Efeito visual de pular no badge
             cartBadge.style.transform = 'scale(1.3)';
             setTimeout(() => { cartBadge.style.transform = 'scale(1)'; }, 200);
         }
         
         const btn = event.target.closest('button');
         const originalText = btn.innerHTML;
-        btn.innerHTML = '<span class="cart-button_txt">Adicionado! ✓</span>';
+        btn.innerHTML = '<span class="cart-button_txt text-white">Adicionado! ✓</span>';
         btn.style.backgroundColor = '#4caf50'; 
         
-        // Aguarda 600ms para mostrar o feedback visual, dps redireciona pro carrinho
+        // Aguarda 600ms para feedback visual e envia pro carrinho
         setTimeout(() => {
             btn.innerHTML = originalText;
             btn.style.backgroundColor = ''; 
@@ -2226,7 +1282,7 @@
         }, 600);
     }
 
-    // Funções de Toggle entre a Home, Grid e Carrinho
+    // Transição de Telas
     function showProductsPage(event) {
         if(event) event.preventDefault();
         document.getElementById('home-page').style.display = 'none';
@@ -2249,6 +1305,7 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    // Controle de Quantidade (+ e -)
     document.addEventListener('DOMContentLoaded', () => {
         const minusButtons = document.querySelectorAll('.customQtyInput__button--minus');
         const plusButtons = document.querySelectorAll('.customQtyInput__button--plus');
