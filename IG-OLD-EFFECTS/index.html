@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cacau Show </title>
+    <title>Cacau Show - Clone</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
@@ -218,7 +218,49 @@
         }
 
         /* ==========================================
-           GRID DE PRODUTOS
+           BANNER PRINCIPAL (HERO CAROUSEL)
+           ========================================== */
+        #carousel-main-banner-1 .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        #carousel-main-banner-1 .banner-image {
+            width: 100%;
+            max-height: 480px; 
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        #carousel-main-banner-1 .swiper-button-next,
+        #carousel-main-banner-1 .swiper-button-prev {
+            background-color: rgba(255, 255, 255, 0.95);
+            color: #d12027;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+
+        #carousel-main-banner-1 .swiper-button-next:after,
+        #carousel-main-banner-1 .swiper-button-prev:after {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        #carousel-main-banner-1 .swiper-pagination-bullet {
+            background-color: #fff;
+            opacity: 0.6;
+        }
+
+        #carousel-main-banner-1 .swiper-pagination-bullet-active {
+            background-color: #d12027;
+            opacity: 1;
+        }
+
+        /* ==========================================
+           GRID DE PRODUTOS E OUTROS CARROSSÉIS
            ========================================== */
         .product-grid {
             display: grid;
@@ -420,103 +462,103 @@
     <div class="layout-background-color center ">
         <div class="region landingPage__threeRows__row"><div class="experience-component experience-cacaushow_assets-carouselMainBanner">
 
-<div class="carousel-main-banner-container" style="--carousel-image-border-radius: 12px;margin: 20px 0;padding: 0">
+<div class="carousel-main-banner-container container" style="margin: 20px auto; padding: 0;">
     <div class="main-text-container"></div>
     <div class="js-carousel-main-banner position-relative" data-carousel-slide-count="defaultMain" id="carousel-main-banner-1">
         <div class="swiper-button-prev js-swiper-button-prev"></div>
-        <div class="swiper swiper-init swiper-initialized swiper-horizontal swiper-backface-hidden">
-            <div class="swiper-wrapper"><div class="swiper-slide swiper-slide-active" data-swiper-slide-index="0" style="width: 794px; margin-right: 16px;">
+        <div class="swiper swiper-main-hero swiper-initialized swiper-horizontal swiper-backface-hidden">
+            <div class="swiper-wrapper"><div class="swiper-slide swiper-slide-active" data-swiper-slide-index="0" style="width: 100%;">
 
-<div class="main-banner-container">
-    <div class="main-banner-container">
-        <a href="javascript:void(0)" onclick="showProductsPage(event)" class="banner-link">
-            <figure class="banner-figure-container js-view-promotion js-select-promotion mb-0 " style="border-radius: 12px">
-                <img class="banner-image d-none d-sm-block" alt="null" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dw409f7507/Home/Banner-Carrossel/1254x530_cosumidor_pascoa.jpg">
-                <img class="banner-image d-block d-sm-none" alt="null" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dw23c376f1/Home/Banner-Carrossel/390x410_consumidor_consumidor.gif">
+<div class="main-banner-container w-100">
+    <div class="main-banner-container w-100">
+        <a href="javascript:void(0)" onclick="showProductsPage(event)" class="banner-link w-100 d-block">
+            <figure class="banner-figure-container js-view-promotion js-select-promotion mb-0 w-100" style="border-radius: 12px">
+                <img class="banner-image w-100 d-none d-sm-block" alt="null" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dw409f7507/Home/Banner-Carrossel/1254x530_cosumidor_pascoa.jpg">
+                <img class="banner-image w-100 d-block d-sm-none" alt="null" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dw23c376f1/Home/Banner-Carrossel/390x410_consumidor_consumidor.gif">
             </figure>
         </a>
     </div>
 </div>
-</div><div class="swiper-slide swiper-slide-next" data-swiper-slide-index="1" style="width: 794px; margin-right: 16px;">
+</div><div class="swiper-slide swiper-slide-next" data-swiper-slide-index="1" style="width: 100%;">
 
-<div class="main-banner-container">
-    <div class="main-banner-container">
-        <a href="javascript:void(0)" onclick="showProductsPage(event)" class="banner-link">
-            <figure class="banner-figure-container js-view-promotion js-select-promotion mb-0 " style="border-radius: 12px">
-                <img class="banner-image d-none d-sm-block" alt="null" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dw323c23d0/Home/Banner-Carrossel/1264x530_pascoa-infantil-(2).png">
-                <img class="banner-image d-block d-sm-none" alt="null" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dw986a4878/Home/Banner-Carrossel/390x410_pascoa-infantil-(1).gif">
+<div class="main-banner-container w-100">
+    <div class="main-banner-container w-100">
+        <a href="javascript:void(0)" onclick="showProductsPage(event)" class="banner-link w-100 d-block">
+            <figure class="banner-figure-container js-view-promotion js-select-promotion mb-0 w-100" style="border-radius: 12px">
+                <img class="banner-image w-100 d-none d-sm-block" alt="null" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dw323c23d0/Home/Banner-Carrossel/1264x530_pascoa-infantil-(2).png">
+                <img class="banner-image w-100 d-block d-sm-none" alt="null" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dw986a4878/Home/Banner-Carrossel/390x410_pascoa-infantil-(1).gif">
             </figure>
         </a>
     </div>
 </div>
-</div><div class="swiper-slide" data-swiper-slide-index="2" style="width: 794px; margin-right: 16px;">
+</div><div class="swiper-slide" data-swiper-slide-index="2" style="width: 100%;">
 
-<div class="main-banner-container">
-    <div class="main-banner-container">
-        <a href="javascript:void(0)" onclick="showProductsPage(event)" class="banner-link">
-            <figure class="banner-figure-container js-view-promotion js-select-promotion mb-0 " style="border-radius: 12px">
-                <img class="banner-image d-none d-sm-block" alt="null" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dw2b8cb065/Home/Banner-Carrossel/mini-show_ajustado_1264x530.png">
-                <img class="banner-image d-block d-sm-none" alt="null" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dw2835fc02/Home/mini-show_390x410.gif">
+<div class="main-banner-container w-100">
+    <div class="main-banner-container w-100">
+        <a href="javascript:void(0)" onclick="showProductsPage(event)" class="banner-link w-100 d-block">
+            <figure class="banner-figure-container js-view-promotion js-select-promotion mb-0 w-100" style="border-radius: 12px">
+                <img class="banner-image w-100 d-none d-sm-block" alt="null" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dw2b8cb065/Home/Banner-Carrossel/mini-show_ajustado_1264x530.png">
+                <img class="banner-image w-100 d-block d-sm-none" alt="null" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dw2835fc02/Home/mini-show_390x410.gif">
             </figure>
         </a>
     </div>
 </div>
-</div><div class="swiper-slide" data-swiper-slide-index="3" style="width: 794px; margin-right: 16px;">
+</div><div class="swiper-slide" data-swiper-slide-index="3" style="width: 100%;">
 
-<div class="main-banner-container">
-    <div class="main-banner-container">
-        <a href="javascript:void(0)" onclick="showProductsPage(event)" class="banner-link">
-            <figure class="banner-figure-container js-view-promotion js-select-promotion mb-0 " style="border-radius: 12px">
-                <img class="banner-image d-none d-sm-block" alt="Páscoa" src="https://www.cacaushow.com.br/on/demandware.static/-/Sites-CacauShow-Library/default/dw25301566/Home/Banner-Carrossel/1264x530_pascoa0111.png">
-                <img class="banner-image d-block d-sm-none" alt="Páscoa" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dwe7887b1b/Home/Banner-Carrossel/390x410_pascoa.gif">
+<div class="main-banner-container w-100">
+    <div class="main-banner-container w-100">
+        <a href="javascript:void(0)" onclick="showProductsPage(event)" class="banner-link w-100 d-block">
+            <figure class="banner-figure-container js-view-promotion js-select-promotion mb-0 w-100" style="border-radius: 12px">
+                <img class="banner-image w-100 d-none d-sm-block" alt="Páscoa" src="https://www.cacaushow.com.br/on/demandware.static/-/Sites-CacauShow-Library/default/dw25301566/Home/Banner-Carrossel/1264x530_pascoa0111.png">
+                <img class="banner-image w-100 d-block d-sm-none" alt="Páscoa" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dwe7887b1b/Home/Banner-Carrossel/390x410_pascoa.gif">
             </figure>
         </a>
     </div>
 </div>
-</div><div class="swiper-slide" data-swiper-slide-index="4" style="width: 794px; margin-right: 16px;">
+</div><div class="swiper-slide" data-swiper-slide-index="4" style="width: 100%;">
 
-<div class="main-banner-container">
-    <div class="main-banner-container">
-        <a href="javascript:void(0)" onclick="showProductsPage(event)" class="banner-link">
-            <figure class="banner-figure-container js-view-promotion js-select-promotion mb-0 " style="border-radius: 12px">
-                <img class="banner-image d-none d-sm-block" alt="null" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dw5238b315/Home/Banner-Carrossel/1264x530_pascoa-infantil_harry.png">
-                <img class="banner-image d-block d-sm-none" alt="null" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dwc3c12673/Home/Banner-Carrossel/390x410_pascoa-infantil.gif">
+<div class="main-banner-container w-100">
+    <div class="main-banner-container w-100">
+        <a href="javascript:void(0)" onclick="showProductsPage(event)" class="banner-link w-100 d-block">
+            <figure class="banner-figure-container js-view-promotion js-select-promotion mb-0 w-100" style="border-radius: 12px">
+                <img class="banner-image w-100 d-none d-sm-block" alt="null" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dw5238b315/Home/Banner-Carrossel/1264x530_pascoa-infantil_harry.png">
+                <img class="banner-image w-100 d-block d-sm-none" alt="null" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dwc3c12673/Home/Banner-Carrossel/390x410_pascoa-infantil.gif">
             </figure>
         </a>
     </div>
 </div>
-</div><div class="swiper-slide" data-swiper-slide-index="5" style="width: 794px; margin-right: 16px;">
+</div><div class="swiper-slide" data-swiper-slide-index="5" style="width: 100%;">
 
-<div class="main-banner-container">
-    <div class="main-banner-container">
-        <a href="javascript:void(0)" onclick="showProductsPage(event)" class="banner-link">
-            <figure class="banner-figure-container js-view-promotion js-select-promotion mb-0 " style="border-radius: 12px">
-                <img class="banner-image d-none d-sm-block" alt="null" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dw288959ed/Home/Banner-Carrossel/1264x530.png">
-                <img class="banner-image d-block d-sm-none" alt="null" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dwf25b8985/Home/Banner-Carrossel/390x410.jpg">
+<div class="main-banner-container w-100">
+    <div class="main-banner-container w-100">
+        <a href="javascript:void(0)" onclick="showProductsPage(event)" class="banner-link w-100 d-block">
+            <figure class="banner-figure-container js-view-promotion js-select-promotion mb-0 w-100" style="border-radius: 12px">
+                <img class="banner-image w-100 d-none d-sm-block" alt="null" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dw288959ed/Home/Banner-Carrossel/1264x530.png">
+                <img class="banner-image w-100 d-block d-sm-none" alt="null" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dwf25b8985/Home/Banner-Carrossel/390x410.jpg">
             </figure>
         </a>
     </div>
 </div>
-</div><div class="swiper-slide" data-swiper-slide-index="6" style="width: 794px; margin-right: 16px;">
+</div><div class="swiper-slide" data-swiper-slide-index="6" style="width: 100%;">
 
-<div class="main-banner-container">
-    <div class="main-banner-container">
-        <a href="javascript:void(0)" onclick="showProductsPage(event)" class="banner-link">
-            <figure class="banner-figure-container js-view-promotion js-select-promotion mb-0 " style="border-radius: 12px">
-                <img class="banner-image d-none d-sm-block" alt="null" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dwe85029af/Home/Banner-Carrossel/1264x530_pascoa-infantil_snoopy.png">
-                <img class="banner-image d-block d-sm-none" alt="null" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dw47b7695f/Home/Banner-Carrossel/390x410_pascoa-infantil_snoopy.png">
+<div class="main-banner-container w-100">
+    <div class="main-banner-container w-100">
+        <a href="javascript:void(0)" onclick="showProductsPage(event)" class="banner-link w-100 d-block">
+            <figure class="banner-figure-container js-view-promotion js-select-promotion mb-0 w-100" style="border-radius: 12px">
+                <img class="banner-image w-100 d-none d-sm-block" alt="null" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dwe85029af/Home/Banner-Carrossel/1264x530_pascoa-infantil_snoopy.png">
+                <img class="banner-image w-100 d-block d-sm-none" alt="null" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dw47b7695f/Home/Banner-Carrossel/390x410_pascoa-infantil_snoopy.png">
             </figure>
         </a>
     </div>
 </div>
-</div><div class="swiper-slide" data-swiper-slide-index="7" style="width: 794px; margin-right: 16px;">
+</div><div class="swiper-slide" data-swiper-slide-index="7" style="width: 100%;">
 
-<div class="main-banner-container">
-    <div class="main-banner-container">
-        <a href="javascript:void(0)" onclick="showProductsPage(event)" class="banner-link">
-            <figure class="banner-figure-container js-view-promotion js-select-promotion mb-0 " style="border-radius: 12px">
-                <img class="banner-image d-none d-sm-block" alt="null" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dwf38e9018/Home/Banner-Carrossel/1264x530_pascoa-infantil_ursinhos.png">
-                <img class="banner-image d-block d-sm-none" alt="null" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dwc6d7a667/Home/Banner-Carrossel/390x410_pascoa-infantil_ursinhos.gif">
+<div class="main-banner-container w-100">
+    <div class="main-banner-container w-100">
+        <a href="javascript:void(0)" onclick="showProductsPage(event)" class="banner-link w-100 d-block">
+            <figure class="banner-figure-container js-view-promotion js-select-promotion mb-0 w-100" style="border-radius: 12px">
+                <img class="banner-image w-100 d-none d-sm-block" alt="null" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dwf38e9018/Home/Banner-Carrossel/1264x530_pascoa-infantil_ursinhos.png">
+                <img class="banner-image w-100 d-block d-sm-none" alt="null" src="https://www.cacaushow.com.br/dw/image/v2/BFJD_PRD/on/demandware.static/-/Sites-CacauShow-Library/default/dwc6d7a667/Home/Banner-Carrossel/390x410_pascoa-infantil_ursinhos.gif">
             </figure>
         </a>
     </div>
@@ -529,11 +571,11 @@
 </div>
 </div>
 
-<div class="experience-component experience-einstein-einsteinCarousel">
+<div class="experience-component experience-einstein-einsteinCarousel container">
 <div class="einstein-container" style="margin: 50px 0;padding: 0">
         <div class="row">
             <div class="col-12">
-                <h3 class="carousel-title mb-3" style="text-align: left">Especial de Páscoa</h3>
+                <h3 class="carousel-title mb-3" style="text-align: left; font-weight: bold; color: #4a3c3c;">Especial de Páscoa</h3>
             </div>
         </div>
     <div id="carousel-63a15876bd0e883259406dc1ae" class="experience-einstein-carousel experience-einstein-carouselCategory experience-einstein-carouselProduct">
@@ -823,7 +865,7 @@
 </section>
 <section id="products-page" style="display: none;" class="container mt-4 mb-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 style="color: #4a3c3c; font-weight: bold; font-family: 'Playfair Display', serif; font-style: italic;">Especial de Páscoa</h2>
+        <h2 style="color: #4a3c3c; font-weight: bold; font-style: italic;">Especial de Páscoa</h2>
         <button class="cs-btn-entrar" onclick="showHomePage()">Voltar para a Home</button>
     </div>
 
@@ -1128,7 +1170,6 @@
         </div>
     </div>
 </section>
-</main>
 <footer class="cs-footer">
     <div class="container pb-4" style="border-bottom: 1px solid #eaeaea;">
         <div class="row text-center cs-info-blocks-row">
@@ -1155,7 +1196,7 @@
         </div>
     </div>
     
-    <div class="container pt-4">
+    <div class="container pt-4 position-relative">
         <div class="row">
             <div class="col-md-5 mb-4">
                 <p style="font-size: 12px; line-height: 1.6; color: #88786f; max-width: 90%;">
@@ -1200,9 +1241,9 @@
                         </a>
                     </div>
                 </div>
-                <div class="cs-feliz-hoje text-end d-none d-md-block">feliz hoje</div>
             </div>
         </div>
+        <div class="cs-feliz-hoje d-none d-md-block">feliz hoje</div>
     </div>
     
     <div class="cs-footer-bottom">
@@ -1213,8 +1254,26 @@
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script>
-    // Inicialização básica do Swiper
-    var swipers = document.querySelectorAll('.swiper-init');
+    // Inicialização do Swiper Principal Hero
+    var heroSwiper = new Swiper('.swiper-main-hero', {
+        slidesPerView: 1,
+        loop: true,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+        navigation: {
+            nextEl: '#carousel-main-banner-1 .swiper-button-next',
+            prevEl: '#carousel-main-banner-1 .swiper-button-prev',
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
+
+    // Inicialização básica do Swiper para produtos
+    var swipers = document.querySelectorAll('.swiper-init:not(.swiper-main-hero)');
     swipers.forEach(function(swiperContainer) {
         new Swiper(swiperContainer, {
             slidesPerView: 1,
